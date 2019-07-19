@@ -7,7 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/share/dashboard/dashboard.component';
 import { AppRoutes } from './app.routing';
 import { NavbarComponent } from './component/share/navbar/navbar.component';
-import { PruebaListComponent } from './component/prueba/prueba-list/prueba-list.component';
+import { SharedModule } from './component/share/share.module';
+import { ConstantService } from 'src/app/services/constant.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 /*PRIMENG*/
 import {MenubarModule} from 'primeng/menubar';
@@ -16,13 +18,11 @@ import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
 
 
-
 @NgModule({
 declarations: [
 AppComponent,
 DashboardComponent,
-NavbarComponent,
-PruebaListComponent
+NavbarComponent
 ],
 imports: [
 BrowserModule,
@@ -34,9 +34,12 @@ AppRoutes,
 MenubarModule,
 ButtonModule,
 InputTextModule,
-PanelModule
+PanelModule,
+SharedModule
 ],
-providers: [],
+providers: [
+  ConstantService,
+  GlobalService],
 bootstrap: [AppComponent]
 })
 export class AppModule { }

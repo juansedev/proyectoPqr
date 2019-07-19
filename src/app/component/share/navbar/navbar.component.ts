@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
       {
           label: 'Inicio',
           icon: 'pi pi-fw pi-home',
+          routerLink: ['/dashboard/tipo-servicio']
       },
       {
           label: 'Gestión',
