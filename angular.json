@@ -27,10 +27,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/primeng/resources/themes/nova-colored/theme.css",
+              "node_modules/pace-js/themes/blue/pace-theme-minimal.css",
+              "node_modules/primeicons/primeicons.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": ["node_modules/pace-js/pace.min.js"]
           },
           "configurations": {
             "production": {
