@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService, DynamicDialogRef, DynamicDialogConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-tipo-servicio-form',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TipoServicioFormComponent implements OnInit {
 
-  constructor() { }
+  // @Input
+  constructor(
+    public dynamicDialogRef: DynamicDialogRef,
+    public dynamicDialogConfig: DynamicDialogConfig
+  ) { }
 
   ngOnInit() {
+    console.log(this.dynamicDialogConfig.data);
   }
+
 
 }
