@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TipoDocumentoFormComponent } from './tipo-documento-form.component';
+import { TiposRespuestaListComponent } from './tipos-respuesta-list.component';
 
-describe('TipoDocumentoFormComponent', () => {
-  let component: TipoDocumentoFormComponent;
-  let fixture: ComponentFixture<TipoDocumentoFormComponent>;
+describe('TiposRespuestaListComponent', () => {
+  let component: TiposRespuestaListComponent;
+  let fixture: ComponentFixture<TiposRespuestaListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TipoDocumentoFormComponent ]
+      declarations: [ TiposRespuestaListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TipoDocumentoFormComponent);
+    fixture = TestBed.createComponent(TiposRespuestaListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-@Component({
+@Component(
+  {
   selector: 'app-tipo-tramite-list',
   templateUrl: './tipo-tramite-list.component.html',
   styleUrls: ['./tipo-tramite-list.component.scss']

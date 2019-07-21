@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MessageService, ConfirmationService, DialogService, DynamicDialogRef } from 'primeng/api';
 import { SharedModule } from '../share/share.module';
-import { TipoTramiteFormComponent } from './tipo-tramite-form/tipo-tramite-form.component';
-import { TipoTramiteListComponent } from '../tipoTramite/tipo-tramite-list/tipo-tramite-list.component';
+import { TiposDocumentosFormComponent } from './tipos-documentos-form/tipos-documentos-form.component';
+import { TiposDocumentosListComponent } from './tipos-documentos-list/tipos-documentos-list.component';
 
 export const routes: Routes = [
-  { path: '', component: TipoTramiteListComponent, pathMatch: 'full' }
+  { path: '', component: TiposDocumentosListComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -16,9 +16,10 @@ export const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   entryComponents: [
-    TipoTramiteFormComponent
+    TiposDocumentosFormComponent
   ],
-  declarations: [TipoTramiteListComponent, TipoTramiteFormComponent],
+  declarations: [TiposDocumentosListComponent, TiposDocumentosFormComponent ],
   providers: [MessageService, ConfirmationService, DialogService, DynamicDialogRef]
 })
-export class TipoTramiteModule { }
+
+export class TiposDocumentosModule { }

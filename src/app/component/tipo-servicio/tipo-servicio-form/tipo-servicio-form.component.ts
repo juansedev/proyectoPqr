@@ -17,6 +17,4 @@ export class TipoServicioFormComponent implements OnInit {
   ngOnInit() {
     console.log(this.dynamicDialogConfig.data);
   }
-
-
 }
