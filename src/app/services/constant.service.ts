@@ -8,9 +8,9 @@ export class ConstantService {
   // public API_URL = 'http://localhost:8080/wsmanagement/';
   // public API_URL = 'http://localhost:3000';
   // public API_URL = 'http://harvin-rengifo:8010/wsmanagement';
-  public API_URL = 'http://192.168.0.18:8810/wspsptaller';
-  public actividad = 'actividad';
-  public actividades = 'actividades';
+  public API_URL = 'http://192.168.0.18:8810/wsserviciopqr';
+  public tipoServicio = 'servicio';
+  public tiposServicios = 'servicios';
 
   constructor() { }
 

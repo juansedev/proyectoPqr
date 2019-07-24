@@ -18,6 +18,8 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {SpinnerModule} from 'primeng/spinner';
+import { ConfirmDialogModule } from 'primeng/primeng';
+
 
 @NgModule({
   imports: [
@@ -36,7 +38,8 @@ import {SpinnerModule} from 'primeng/spinner';
     DynamicDialogModule,
     InputTextareaModule,
     CalendarModule,
-    SpinnerModule
+    SpinnerModule,
+    ConfirmDialogModule
   ],
   exports: [
     RouterModule,
@@ -54,7 +57,8 @@ import {SpinnerModule} from 'primeng/spinner';
     DynamicDialogModule,
     InputTextareaModule,
     CalendarModule,
-    SpinnerModule
+    SpinnerModule,
+    ConfirmDialogModule
   ],
 declarations: [
 // ContentHeaderComponent,

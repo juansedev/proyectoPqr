@@ -1,42 +1,20 @@
-<div class="ui-g">
-  <div class="ui-g-10">
-    <div class="ui-g-12">
-      <div class="ui-g-5">
-        <label>Fecha:</label>
-        <p-calendar id="fecha"></p-calendar>
-      </div>
-      <div class="ui-g-7">
-        <label>Actividad:</label>
-        <p-dropdown placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
-      </div>
+<form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <label>Código(*)</label><br>
+      <input type="text" pInputText name="codigo" style="width: 100%" [(ngModel)]="item.codigo" required>
+      <label>Nombre(*)</label><br>
+      <input type="text" pInputText name="nombre" style="width: 100%" [(ngModel)]="item.nombre" required>
+      <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox>
     </div>
-    <div class="ui-g-3">
-      <div>
-        <label>Comeinzo:</label>
-        <p-calendar [timeOnly]="true" [inputStyle]="{'width': '100%'}"></p-calendar>
-      </div>
-      <div>
-        <label>Fin</label>
-        <p-calendar [timeOnly]="true" [inputStyle]="{'width': '100%'}"></p-calendar>
-      </div>
-      <div>
-        <label>Interrupcion</label>
-        <p-spinner size="30" [inputStyle]="{'width': '100%'}"></p-spinner>
-      </div>
-      <div>
-        <label>Total</label>
-        <p-spinner size="30" [inputStyle]="{'width': '100%'}"></p-spinner>
-      </div>
-    </div>
-    <div class="ui-g-9">
-      <label>Comentarios o Detalle</label><br>
-      <textarea pInputTextarea [rows]="8" style="width: 100%"></textarea>
+    <div class="ui-g-2">
+      <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+        label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+      <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
+        label="Salir" type="button"></button>
     </div>
   </div>
-  <div class="ui-g-2">
-    <button pButton type="button" label="Guardar" style="width:100px"></button>
-    <button pButton type="button" label="Cancelar" style="width:100px"></button>
-    <button pButton type="button" label="Editar" style="width:100px"></button>
-    <button pButton type="button" label="Salir" style="width:100px"></button>
-  </div>
+</form>
+<div class="card">
+  <p-confirmDialog  width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>
 </div>
