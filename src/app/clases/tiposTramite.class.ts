@@ -1,8 +1,7 @@
 import { Time } from '@angular/common';
 
 export class TipoTramite {
-    constructor(
-        public fecha: Date,
+    constructor(     
         public codigo: number,
         public nombre: string,
         public activo: number,

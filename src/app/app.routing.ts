@@ -17,13 +17,11 @@ export const routes: Routes = [
       { path: 'detalle-causal', loadChildren: './component/detalle-causal/detalle-causal.module#DetalleCausalModule' },
       { path: 'tipo-respuesta', loadChildren: './component/tipos-respuesta/tipos-respuesta.module#TiposRespuestaModule' },
       { path: 'tipo-notificacion', loadChildren: './component/tipos-notificacion/tipos-notificacion.module#TiposNotificacionModule' },
-      { path: 'suscriptores', loadChildren: './component/suscriptores/suscriptores.module#SuscriptoresModule' },
-      { path: 'tipos-documentos', loadChildren: './component/tipos-documentos/tipos-documentos.module#TiposDocumentosModule' },
+      { path: 'suscriptores', loadChildren: './component/suscriptores/suscriptores.module#SuscriptoresModule' },      
       // Herramientas
       { path: 'contrasena', loadChildren: './component/contrasena/contrasena.module#ContrasenaModule' },
       { path: 'informes', loadChildren: './component/informes/informes.module#InformesModule' },
-      // Sitema
-      { path: 'perfiles', loadChildren: './component/perfiles/perfiles.module#PerfilesModule' },
+      // Sitema    
       { path: 'usuarios', loadChildren: './component/usuarios/usuarios.module#UsuariosModule' }
     ]
   },

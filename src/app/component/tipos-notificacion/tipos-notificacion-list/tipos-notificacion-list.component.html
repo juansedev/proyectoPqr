@@ -1,3 +1,70 @@
-<p>
-  tipos-notificacion-list works!
-</p>
+<p-toast></p-toast>
+<div class="padre" style="width: 95%">
+  <p-panel header="Tipo de Notificación">
+    <div class="ui-g">
+      <div class="ui-sm-12 ui-g-8">
+        <div class="form-inline">
+          <div class="ui-sm-12 ui-g-2">
+            <p-dropdown [options]="lcFiltroConsulta" [(ngModel)]="lcSelectedFiltro" optionLabel="label"
+              [autoWidth]="false" [style]="{'width':'100%'}"></p-dropdown>
+          </div>
+          <div class="ui-sm-12 ui-g-3">
+            <input type="text" pInputText placeholder="" name="lcConsulta" [(ngModel)]="lcConsulta" class="uppercase">
+          </div>
+          <div class="ui-sm-12 ui-g-2">
+            <p-dropdown [options]="lcFiltroStd" optionLabel="label" [(ngModel)]="lcSelectedFiltroStd" [autoWidth]="true"
+              [autoWidth]="false" [style]="{'width':'100%'}"></p-dropdown>
+          </div>
+          <div class="ui-sm-10 ui-g-2">
+            <button pButton type="button" class="gray-btn btn-buscar btn-list " label="Buscar" (click)="fnBuscar()"
+              icon="fa fa-search"></button>
+          </div>
+          <!-- <div class="ui-sm-10 ui-g-2">
+            <button type="button" pButton (click)="showSuccess()" label="Success" class="ui-button-success"></button>
+          </div> -->
+        </div>
+        <br>
+      </div>
+      <div class="ui-sm-12 ui-g-12">
+        <p-table [columns]="lcHeaders" [value]="lcListItems" [paginator]="true" [rows]="10"
+        resizableColumns="true" selectionMode="single" [(selection)]="lcSelectedRow" dataKey="id" (dblclick)="fnPropiedades()">
+          <ng-template pTemplate="header" let-columns >
+            <tr>
+              <th *ngFor="let col of columns" [pSortableColumn]="col.field" [style.width]="col.width" pResizableColumn>
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td [attr.colspan]="columns.length">
+                No se encontraron resultados
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData" (dblclick)="fnAsignarRow(rowData)">
+              <td class="ui-resizable-column"> {{rowData['codigo']}}</td>
+              <td class="ui-resizable-column"> {{rowData['nombre'] }}</td>
+              <td class="ui-resizable-column" [style.text-align]="'center'"> <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['activo']" disabled ></p-checkbox></td>
+              <!-- <td class="ui-resizable-column" [style.text-align]="'center'">
+              <p-checkbox *ngIf="rowData['enb'] !== undefined" [(ngModel)]="rowData['enb']" binary="true"
+                disabled="true"></p-checkbox>
+            </td> -->
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="ui-g-12">
+        <button pButton type="button" class="ui-button-success btn-list " label="Nuevo" (click)="fnNuevo()"
+          icon="fa fa-file-text"></button>
+        <button pButton type="button" class=" btn-list " label="Propiedades" (click)="fnPropiedades()"
+          icon="fa fa-pencil-square-o"></button>
+        <button pButton type="button" class="ui-button-danger btn-list" label="Eliminar" (click)="fnEliminar()"
+          icon="fa fa-trash"></button>
+        <!-- <button pButton type="button" class=" btn-list gray-btn" label="Salir" (click)="fnSalir()" icon="fa fa-times"></button> -->
+      </div>
+    </div>
+  </p-panel>
+</div>

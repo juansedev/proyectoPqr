@@ -1,3 +1,21 @@
-<p>
-  suscriptores-form works!
-</p>
+<form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <label>Ccedula(*) </label>
+      <input type="text" pInputText name="codigo" style="width: 30%" [(ngModel)]="item.cedula" required>
+      <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox><br>
+      <label>Nombre(*) </label>
+      <input type="text" pInputText name="nombre" style="width: 80%" [(ngModel)]="item.nombre" required><br>
+     
+    </div>
+    <div class="ui-g-2">
+      <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+        label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+      <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
+        label="Salir" type="button"></button>
+    </div>
+  </div>
+</form>
+<div class="card">
+  <p-confirmDialog  width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>
+</div>

@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
               {label: 'Tipos de Respuesta', icon: 'pi pi-fw pi-bars' , routerLink: ['/dashboard/tipo-respuesta']},
               {label: 'Tipos de Notificación', icon: 'pi pi-fw pi-bars' , routerLink: ['/dashboard/tipo-notificacion']},
               {label: 'Suscriptores', icon: 'pi pi-fw pi-bars' , routerLink: ['/dashboard/suscriptores']},
-              {label: 'Tipos de Documentos', icon: 'pi pi-fw pi-bars' , routerLink: ['/dashboard/tipos-documentos']}
+              //{label: 'Tipos de Documentos', icon: 'pi pi-fw pi-bars' , routerLink: ['/dashboard/tipos-documentos']}
           ]
       },
       {

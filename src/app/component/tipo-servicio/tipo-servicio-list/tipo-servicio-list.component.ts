@@ -145,5 +145,42 @@ export class TipoServicioListComponent implements OnInit {
       }
     });
   }
+
+  fnEliminar() {
+    if (this.lcSelectedRow != null) {
+      this.fnConfirm(this.lcSelectedRow);
+    } else {
+      this.messageService.add({ severity: 'info', summary: 'Verifique', detail: 'Seleccione un registro' });
+    }
+  }
+
+  fnConfirm(SelectedRow) {
+    this.confirmationService.confirm({
+      header: 'Confirmación',
+      message: `<center>¿Está seguro de eliminar el registro <br>
+        ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
+      icon: 'fa fa-trash',
+      accept: () => {
+        this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
+          .subscribe(
+            (data: TipoServicio) => {
+              this.messageService.add({
+                severity: 'success', summary: 'Registro Eliminado',
+                detail: 'Registro Eliminado Satisfactoriamente'
+              });
+              this.lcListItems = this.lcListItems.filter((item) => item.id !== SelectedRow['id']);
+            },
+            error => {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: error });
+            }
+          );
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'info', summary: 'Proceso Cancelado', detail: 'Se canceló la eliminación del registro' });
+      },
+    });
+  }
+
+
   
 }
