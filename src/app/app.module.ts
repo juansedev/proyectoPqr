@@ -16,13 +16,14 @@ import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
-
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
 declarations: [
 AppComponent,
 DashboardComponent,
-NavbarComponent
+NavbarComponent,
+HomeComponent
 ],
 imports: [
 BrowserModule,

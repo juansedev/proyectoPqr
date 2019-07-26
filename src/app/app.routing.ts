@@ -1,19 +1,20 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { DashboardComponent } from './component/share/dashboard/dashboard.component';
+import { HomeComponent } from './component/home/home.component';
 
 export const routes: Routes = [
   // { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-      { path: '**', pathMatch: 'full', redirectTo: 'dashboard' },
+      { path: '**', pathMatch: 'full', redirectTo: 'home' },
       // Gestion
       { path: 'registro', loadChildren: './component/registro/registro.module#RegistroModule' },
       // Catalogos
       { path: 'tipo-servicio', loadChildren: './component/tipo-servicio/tipo-servicio.module#TipoServicioModule' },
       { path: 'codigo-dane', loadChildren: './component/codigo-dane/codigo-dane.module#CodigoDaneModule' },
-      { path: 'tipo-tramite', loadChildren: './component/tipoTramite/tipoTramite.module#TipoTramiteModule' },
+      { path: 'tipo-tramite', loadChildren: './component/tipo-tramite/tipo-tramite.module#TipoTramiteModule' },
       { path: 'detalle-causal', loadChildren: './component/detalle-causal/detalle-causal.module#DetalleCausalModule' },
       { path: 'tipo-respuesta', loadChildren: './component/tipos-respuesta/tipos-respuesta.module#TiposRespuestaModule' },
       { path: 'tipo-notificacion', loadChildren: './component/tipos-notificacion/tipos-notificacion.module#TiposNotificacionModule' },
@@ -25,7 +26,9 @@ export const routes: Routes = [
       { path: 'usuarios', loadChildren: './component/usuarios/usuarios.module#UsuariosModule' }
     ]
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'dashboard' }
+  { path: 'home', component: HomeComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
+     
 ];
 
 export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

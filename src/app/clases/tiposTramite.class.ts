@@ -1,10 +1,10 @@
 import { Time } from '@angular/common';
 
-export class TipoTramite {
-    constructor(     
+export class TiposTramite {
+    constructor(
         public codigo: number,
         public nombre: string,
-        public activo: number,
+        public activo: boolean,
         public id?: number
     ) {}
 }

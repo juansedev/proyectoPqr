@@ -6,28 +6,29 @@ import {
 import { Router } from '@angular/router';
 import { EventosService } from 'src/app/services/eventos.service';
 import { ConstantService } from 'src/app/services/constant.service';
-import { Suscriptores } from 'src/app/clases/suscriptores.class';
-import { SuscriptoresFormComponent } from '../suscriptores-form/suscriptores-form.component';
-import { DashboardComponent } from '../../share/dashboard/dashboard.component';
+import { TiposTramite } from 'src/app/clases/tiposTramite.class';
+import { TipoTramiteFormComponent } from '../tipo-tramite-form/tipo-tramite-form.component';
+//import { DashboardComponent } from '../../share/dashboard/dashboard.component';
 import { GlobalService } from 'src/app/services/global.service';
 
+
 @Component({
-  selector: 'app-suscriptores-list',
-  templateUrl: './suscriptores-list.component.html',
-  styleUrls: ['./suscriptores-list.component.scss']
+  selector: 'app-tipo-tramite-list',
+  templateUrl: './tipo-tramite-list.component.html',
+  styleUrls: ['./tipo-tramite-list.component.scss']
 })
-export class SuscriptoresListComponent implements OnInit {
+export class TipoTramiteListComponent implements OnInit {
 
   lcHeaders: { field: string; header: string; width: string; }[]; // cabecera de la tabla se le pueden poner mas configuraciones
   lcFiltroConsulta: SelectItem[];
   lcFiltroStd: SelectItem[];
   lcSelectedFiltro: object; // = {label: '', value: ''};
   lcSelectedFiltroStd: object;
-  lcListItems: Suscriptores[] = [];
+  lcListItems: TiposTramite[] = [];
   // lcBreadcrumbItems: MenuItem[];
   // lcHome: MenuItem;
   lcConsulta = ''; // input de la consulta
-  lcSelectedRow: Suscriptores = null; // Cuando uno se para en un fila de la tabla
+  lcSelectedRow: TiposTramite = null; // Cuando uno se para en un fila de la tabla
   /** lcUsuarioSelect contiene todo el objeto seleccionado */
   lcUsuarioSelect: object = {};
 
@@ -41,23 +42,21 @@ export class SuscriptoresListComponent implements OnInit {
     private eventos: EventosService,
     private constant: ConstantService,
     public ref: DynamicDialogRef,
-    public dialogService: DialogService,
-    public dashboard: DashboardComponent
+    public dialogService: DialogService
   ) { }
 
   ngOnInit() {
     this.lcHeaders = [
       { field: 'codigo', header: 'Código', width: '5%' },
       { field: 'nombre', header: 'Nombre', width: '40%' },
-      { field: 'tipo', header: 'Tipo', width: '10%' },
       { field: 'activo', header: 'Activo', width: '5%' }
     ];
 
     this.lcFiltroConsulta = [
-      { label: 'Cedula', value: 'bid' },
+      { label: 'Código', value: 'bid' },
       { label: 'Nombre', value: 'nme' }
     ];
-    this.lcSelectedFiltro = { label: 'Cedula', value: 'bid' };
+    this.lcSelectedFiltro = { label: 'Codigo', value: 'bid' };
 
     this.lcFiltroStd = [
       { label: 'Todos', value: '' },
@@ -94,7 +93,7 @@ export class SuscriptoresListComponent implements OnInit {
     };*/
     this.gService.getAll(this.constant.tiposServicios, this.lcFiltros)
       .subscribe(
-        (data: Suscriptores[]) => this.lcListItems = data,
+        (data: TiposTramite[]) => this.lcListItems = data,
         error => {
           this.messageService.add({ severity: 'info', summary: 'Verifique', detail: error });
           /*const snackBarRef = this.snackBar.open(error, 'OK', { duration: 4000 });
@@ -133,11 +132,11 @@ export class SuscriptoresListComponent implements OnInit {
   fnPruebaDialog(editing, id) {
     const data = { editing: editing, id: id };
     const dialogConfig = new DynamicDialogConfig();
-    dialogConfig.header = 'Suscriptores';
-    dialogConfig.width = '60%';
+    dialogConfig.header = 'Tipo de Notifiación';
+    dialogConfig.width = '30%';
     dialogConfig.closeOnEscape = true;
     dialogConfig.data = data;
-    const ref = this.dialogService.open(SuscriptoresFormComponent, dialogConfig);
+    const ref = this.dialogService.open(TipoTramiteFormComponent, dialogConfig);
     ref.onClose.subscribe((result: any) => {
       if (result) {
         console.log(result);
@@ -163,7 +162,7 @@ export class SuscriptoresListComponent implements OnInit {
       accept: () => {
         this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
           .subscribe(
-            (data: Suscriptores) => {
+            (data: TiposTramite) => {
               this.messageService.add({
                 severity: 'success', summary: 'Registro Eliminado',
                 detail: 'Registro Eliminado Satisfactoriamente'

@@ -1,12 +1,22 @@
 <form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
   <div class="ui-g">
-    <div class="ui-g-8">
-      <label>Ccedula(*) </label>
-      <input type="text" pInputText name="codigo" style="width: 30%" [(ngModel)]="item.cedula" required>
+    <div class="ui-g-10" >
+      <label>Cedula(*) </label>
+      <input type="text" pInputText name="cedula" style="width: 30%" [(ngModel)]="item.cedula" required>      
+      <label>Activo(*) </label>  
       <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox><br>
       <label>Nombre(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 80%" [(ngModel)]="item.nombre" required><br>
-     
+      <input type="text" pInputText name="nombre" style="width: 40%" [(ngModel)]="item.nombre" required>     
+      <label>Dirección(*) </label>
+      <input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre" required><br>
+      <label>Telefono 1(*) </label>
+      <input type="text" pInputText name="nombre" style="width: 35%" [(ngModel)]="item.nombre" required>     
+      <label>Telefono 2(*) </label>
+      <input type="text" pInputText name="nombre" style="width: 35%" [(ngModel)]="item.nombre" required><br>
+      <label>Ciudad(*) </label>
+      <input type="text" pInputText name="nombre" style="width: 40%" [(ngModel)]="item.nombre" required>     
+      <label>Tipo(*) </label>
+      <input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre" required><br>      
     </div>
     <div class="ui-g-2">
       <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
