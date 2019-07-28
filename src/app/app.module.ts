@@ -8,6 +8,7 @@ import { DashboardComponent } from './component/share/dashboard/dashboard.compon
 import { AppRoutes } from './app.routing';
 import { NavbarComponent } from './component/share/navbar/navbar.component';
 import { SharedModule } from './component/share/share.module';
+import { HomeComponent } from './component/home/home.component';
 import { ConstantService } from 'src/app/services/constant.service';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -16,7 +17,8 @@ import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
-import { HomeComponent } from './component/home/home.component';
+
+
 
 @NgModule({
 declarations: [

@@ -1,31 +1,78 @@
 <form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
   <div class="ui-g">
-    <div class="ui-g-10" >
-      <label>Cedula(*) </label>
-      <input type="text" pInputText name="cedula" style="width: 30%" [(ngModel)]="item.cedula" required>      
-      <label>Activo(*) </label>  
-      <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox><br>
-      <label>Nombre(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 40%" [(ngModel)]="item.nombre" required>     
-      <label>Dirección(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre" required><br>
-      <label>Telefono 1(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 35%" [(ngModel)]="item.nombre" required>     
-      <label>Telefono 2(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 35%" [(ngModel)]="item.nombre" required><br>
-      <label>Ciudad(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 40%" [(ngModel)]="item.nombre" required>     
-      <label>Tipo(*) </label>
-      <input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre" required><br>      
+    <div class="ui-g-10">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+        <div classs="ui-g-8  ui-sm-12">
+          <div class="ui-grid-row top-4">
+            <div class="ui-grid-col-2 label-right">
+              Cedula*:
+            </div>
+            <div class="ui-grid-col-7 class-input">
+              <input pInputText type="text" placeholder="Required" style="width: 99%" />
+            </div>
+            <div class="ui-grid-col-2 " style="text-align: right "  >
+              <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo" label="Activo" ></p-checkbox><br>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4">
+            <div class="ui-grid-col-2 label-right">
+              <label>Nombre(*) </label>
+            </div>
+            <div class="ui-grid-col-10 class-input">
+              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4">
+            <div class="ui-grid-col-2 label-right">
+              <label>Dirección(*) </label>
+            </div>
+            <div class="ui-grid-col-10 class-input">
+              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4">
+            <div class="ui-grid-col-2 label-right">
+              <label>Telefono 1(*) </label>
+            </div>
+            <div class="ui-grid-col-4 class-input">
+              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required><br>
+            </div>
+            <div class="ui-grid-col-2 label-right">
+              <label>Telefono 2(*) </label>
+            </div>
+            <div class="ui-grid-col-4 class-input">
+              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required><br>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4">
+            <div class="ui-grid-col-2 label-right">
+              <label>Ciudad(*) </label>
+            </div>
+            <div class="ui-grid-col-4 ">
+              <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                  required></p-dropdown>
+            </div>
+
+            <div class="ui-grid-col-2 label-right">
+              <label>Tipo(*) </label>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                  required></p-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="ui-g-2">
-      <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
-        label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
-      <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
-        label="Salir" type="button"></button>
+    <div class="ui-g-2  ui-sm-12">
+      <div class="ui-grid-row top-4 class-button">
+        <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+          label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+      </div>
+      <div class="ui-grid-row top-4 class-button">
+        <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
+          label="Salir" type="button"></button>
+      </div>
     </div>
   </div>
 </form>
-<div class="card">
-  <p-confirmDialog  width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>
-</div>

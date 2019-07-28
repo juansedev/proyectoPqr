@@ -1,13 +1,37 @@
 <app-navbar></app-navbar>
-
 <div class="ui-g">
-  <div class="ui-g-6">Col1</div>
+  <div class="ui-g-offset-2 ui-g-8" style="margin-top: 50px">
+    <div class="row">
+      <div class="ui-g-6">
+        <div class="div-img ui-md-offset-3 ui-sm-offset-3 ui-md-5 ui-sm-5" style="margin-top: -10px">
+          <a [routerLink]="['/dashboard/registro']">
+            <img src="./assets/listadoPqr.png" alt="Listado PQR" height="100" width="300"></a>
+        </div>
+      </div>
 
-  <div class="ui-g-6">Col2</div>
-  <div class="ui-g-6">Col3</div>
-  <div class="ui-g-6">Col4</div>
+      
+        <div class="ui-g-6">
+          <div class="div-img  ui-md-5 ui-sm-5" style="margin-top: -10px">
+            <a [routerLink]="['/dashboard/registro-form']">
+              <img src="./assets/diligenciaPqr.png" alt="Listado PQR" height="100" width="300"></a>
+          </div>
+      
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ui-g-6"  >
+        <div class="div-img ui-md-offset-3 ui-sm-offset-3 ui-md-5 ui-sm-5" style="margin-top: -10px">
+          <a [routerLink]="['/dashboard/usuario']">
+            <img src="./assets/usuarios.png" alt="Usuarios" height="100" width="300"></a>
+        </div>
+      </div>
+      <div class="ui-g-6">
+        <div class="div-img  ui-md-5 ui-sm-5" style="margin-top: -10px">
+          <a [routerLink]="['/dashboard/informes']">
+            <img src="./assets/informes.png" alt="Informes" height="100" width="300"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<p>
-  home works!
-</p>

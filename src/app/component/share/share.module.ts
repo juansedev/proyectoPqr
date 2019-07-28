@@ -19,6 +19,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {SpinnerModule} from 'primeng/spinner';
 import { ConfirmDialogModule } from 'primeng/primeng';
+import {CardModule} from 'primeng/card';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { ConfirmDialogModule } from 'primeng/primeng';
     InputTextareaModule,
     CalendarModule,
     SpinnerModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CardModule
   ],
   exports: [
     RouterModule,
@@ -58,11 +61,12 @@ import { ConfirmDialogModule } from 'primeng/primeng';
     InputTextareaModule,
     CalendarModule,
     SpinnerModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CardModule
   ],
 declarations: [
 // ContentHeaderComponent,
 // BreadcrumbComponent
-]
+FooterComponent]
 })
 export class SharedModule { }

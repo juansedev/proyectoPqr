@@ -134,7 +134,7 @@ export class SuscriptoresListComponent implements OnInit {
     const data = { editing: editing, id: id };
     const dialogConfig = new DynamicDialogConfig();
     dialogConfig.header = 'Suscriptores';
-    dialogConfig.width = '60%';
+    dialogConfig.width = '45%';
     dialogConfig.closeOnEscape = true;
     dialogConfig.data = data;
     const ref = this.dialogService.open(SuscriptoresFormComponent, dialogConfig);

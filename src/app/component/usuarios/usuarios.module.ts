@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MessageService, ConfirmationService, DialogService, DynamicDialogRef } from 'primeng/api';
 import { SharedModule } from '../share/share.module';
-import { UsuariosComponent } from './usuarios.component';
+import { UsuarioListComponent } from './usuario-list/usuario-list.component';
+import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 
 
 export const routes: Routes = [
-  { path: '', component: UsuariosComponent, pathMatch: 'full' }
+  { path: '', component: UsuarioListComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -15,10 +16,10 @@ export const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  /* entryComponents: [
-    TiposDocumentosFormComponent
-  ], */
-  declarations: [UsuariosComponent ],
+  entryComponents: [
+    UsuarioFormComponent
+  ], 
+  declarations: [ UsuarioFormComponent, UsuarioListComponent ],
   providers: [MessageService, ConfirmationService, DialogService, DynamicDialogRef]
 })
 
