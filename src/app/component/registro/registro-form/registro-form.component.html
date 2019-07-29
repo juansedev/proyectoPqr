@@ -1,3 +1,149 @@
-<p>
-  registro-form works!
-</p>
+<form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
+  <div class="ui-g">
+    <div class="ui-g-12 class-div-ppal">
+      <div class="ui-g-11">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+          <div classs="ui-g-11  ui-sm-12 class-div-group">
+            <p-fieldset>
+              <p-header>Registro</p-header>
+
+              <div class="ui-grid-row top-4  class-input label-right">
+                <div class="ui-grid-2 ui-sd-12 ">
+                  Fecha Radicación(*):
+                </div>
+                <div class="ui-grid-col-4 class-input ">
+                  <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+                </div>
+                <div class="ui-grid-2 ui-sd-12  class-input label-right">
+                  ID Factura:
+                </div>
+                <div class="ui-grid-4 class-input">
+                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                </div>
+              </div>
+
+              <div class="ui-grid-row top-4  class-input label-right">
+                <div class="ui-grid-3 label-right  ">
+                  Tipo de Servicio(*):
+                </div>
+                <div class="ui-grid-col-3 class-dropdown ">
+                  <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                      required></p-dropdown>
+                </div>
+                <div class="ui-grid-3 label-right  ">
+                  Código DANE(*):
+                </div>
+                <div class="ui-grid-col-3 class-dropdown ">
+                  <p-dropdown><input type="text" pInputText name="nombre" style="width: 10%" [(ngModel)]="item.nombre"
+                      required></p-dropdown>
+                </div>
+                <div class="ui-grid-4 class-input">
+                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                </div>
+              </div>
+
+              <div class="ui-grid-row top-4  class-input label-right">
+                <div class="ui-grid-3 label-right  ">
+                  Cedula(*):
+                </div>
+                <div class="ui-grid-col-3 class-dropdown ">
+                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                </div>
+                <div class="ui-grid-col-6 class-input">
+                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                </div>
+              </div>
+            </p-fieldset>
+            <div style="margin-bottom: 15">
+              <p-fieldset>
+                <p-header>Tramite</p-header>
+
+                <div class="ui-grid-row top-4  " style="margin-top: 5px  margin-bottom: 5px">
+                  <div class="ui-grid-2 ui-sd-12 ">
+                    Tipo de Tramite(*):
+                  </div>
+                  <div class="ui-grid-col-3 class-dropdown ">
+                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                        required></p-dropdown>
+                  </div>
+                  <div class="ui-grid-3 label-right  ">
+                    Código Causal(*):
+                  </div>
+                  <div class="ui-grid-col-3 class-dropdown ">
+                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 10%" [(ngModel)]="item.nombre"
+                        required></p-dropdown>
+                  </div>
+                  <div class="ui-grid-4 class-input">
+                    <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                  </div>
+                </div>
+
+                <div class="ui-grid-row top-4  ">
+                  <div class="ui-grid-2 ui-sd-12 ">
+                    Detalle de causal(*):
+                  </div>
+                  <div class="ui-grid-col-10 class-dropdown ">
+                    <textarea rows="10" cols="30" pInputTextarea style="width: 756px height: 40px"
+                      autoResize="autoResize"></textarea>
+                  </div>
+                </div>
+
+              </p-fieldset>
+            </div>
+            <div style="margin-top: 15">
+              <p-fieldset>
+                <p-header>Respuesta y Notificación</p-header>
+
+                <div class="ui-grid-row top-4  class-input label-right" style="margin-top: 5px  margin-bottom: 7px">
+                  <div class="ui-grid-2 ui-sd-12 ">
+                    Fecha de Respuesta(*):
+                  </div>
+                  <div class="ui-grid-col-4 class-input ">
+                    <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+                  </div>
+                  <div class="ui-grid-2 label-right  ">
+                    Tipo de Respuesta(*):
+                  </div>
+                  <div class="ui-grid-col-3 class-dropdown ">
+                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                        required></p-dropdown>
+                  </div>
+                </div>
+
+                <div class="ui-grid-row top-4  class-input label-right" style="  margin-bottom: 7px">
+                  <div class="ui-grid-2 ui-sd-12 ">
+                    Fecha de Notificación(*):
+                  </div>
+                  <div class="ui-grid-col-4 class-input ">
+                    <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+                  </div>
+                  <div class="ui-grid-2 label-right  ">
+                    Tipo de Notificación(*):
+                  </div>
+                  <div class="ui-grid-col-3 class-dropdown ">
+                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                        required></p-dropdown>
+                  </div>
+                </div>
+
+
+              </p-fieldset>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="ui-g-1  ui-sm-12">
+        <div class="ui-grid-row top-4 class-button">
+          <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+            label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+        </div>
+        <div class="ui-grid-row top-4 class-button">
+          <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash"
+            style="width: 100px" label="Salir" type="button"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

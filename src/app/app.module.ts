@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/share/dashboard/dashboard.component';
 import { AppRoutes } from './app.routing';
 import { NavbarComponent } from './component/share/navbar/navbar.component';
+import { FooterComponent } from './component/share/footer/footer.component';
 import { SharedModule } from './component/share/share.module';
 import { HomeComponent } from './component/home/home.component';
 import { ConstantService } from 'src/app/services/constant.service';
@@ -25,7 +26,8 @@ declarations: [
 AppComponent,
 DashboardComponent,
 NavbarComponent,
-HomeComponent
+HomeComponent,
+FooterComponent
 ],
 imports: [
 BrowserModule,

@@ -1,3 +1,106 @@
-<p>
-  usuario-form works!
-</p>
+<form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+        <div class="ui-g-10">
+          <div class="ui-grid-row top-4 ">
+            <div class="ui-grid-2 label-right">
+              <label>Codigo(*)</label>
+            </div>
+            <div class="ui-grid-3 class-input ">
+              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+            </div>
+            <div class="ui-grid-col-3 class-input ">
+              <p-checkbox label="Activo" name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4 ">
+              <div class="ui-grid-2 label-right">
+                <label>Nombre(*)</label>
+              </div>
+              <div class="ui-grid-5 class-input ">
+                <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+              </div>
+              
+            </div>
+            <div class="ui-grid-row top-4 ">
+                <div class="ui-grid-2  label-right">
+                  <label>Contraseña(*)</label>
+                </div>
+                <div class="ui-grid-3 class-input ">
+                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                </div>
+                
+              </div>
+
+              <div class="ui-grid-row top-4 ">
+                  <div class="ui-grid-2 class-input label-right">
+                    <label>Confirma Contraseña(*)</label>
+                  </div>
+                  <div class="ui-grid-3 class-input ">
+                    <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                  </div>
+                  
+                </div>
+        </div>
+        <div class="ui-g-2">
+          <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+            label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+          <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash"
+            style="width: 100px" label="Salir" type="button"></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+          
+              <div class="ui-grid-2  ">
+        <label>Código(*)</label>
+        </div>
+        <div class="ui-grid-col-2 class-input ">
+        <input type="text" pInputText name="codigo" style="width: 30%" [(ngModel)]="item.codigo" required>
+      </div>
+      <div class="ui-grid-row top-4  class-input label-right">
+          <div class="ui-grid-2">
+        <label>Nombre(*)</label>
+        </div>
+        <div class="ui-grid-col-2 class-input "></div>
+        <input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre" required>
+        <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox>
+        </div>
+
+      </div>
+        <div class="ui-grid-row top-4  class-input label-right">
+          <div class="ui-grid-2  ">
+            <label>Contraseña(*)</label>
+          </div>
+          <div class="ui-grid-col-2 class-input ">
+            <input type="text" pInputText name="codigo" style="width: 100%" [(ngModel)]="item.codigo" required>
+          </div>
+        </div>
+        <div class="ui-grid-row top-4  class-input label-right">
+          <div class="ui-grid-2 ui-sd-12 ">
+            <label>Confirmar contraseña(*)</label>
+          </div>
+          <div class="ui-grid-col-4 class-input ">
+            <input type="text" pInputText name="codigo" style="width: 100%" [(ngModel)]="item.codigo" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-g-2">
+        <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+          label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+        <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
+          label="Salir" type="button"></button>
+      </div>
+    </div>
+  
+</form>
+-->

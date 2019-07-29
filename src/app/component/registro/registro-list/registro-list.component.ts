@@ -138,8 +138,8 @@ export class RegistroListComponent implements OnInit {
     fnPruebaDialog(editing, id) {
       const data = { editing: editing, id: id };
       const dialogConfig = new DynamicDialogConfig();
-      dialogConfig.header = 'Detalle Registro';
-      dialogConfig.width = '30%';
+      dialogConfig.header = 'Registro PQR';
+      dialogConfig.width = '80%';
       dialogConfig.closeOnEscape = true;
       dialogConfig.data = data;
       const ref = this.dialogService.open(RegistroFormComponent, dialogConfig);

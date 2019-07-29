@@ -24,8 +24,8 @@ export class NavbarComponent implements OnInit {
           icon: 'pi pi-fw pi-pencil',
           items: [
               {label: 'Registra PQR', icon: 'pi pi-fw pi-briefcase', routerLink: ['/dashboard/registro']},
-              {label: 'Informes', icon: 'pi pi-fw pi-chart-bar' , routerLink: ['/dashboard/informes']},
-              {label: 'Usuarios', icon: 'pi pi-fw pi-user-minus' , routerLink: ['/dashboard/usuarios']}
+              {label: 'Informes', icon: 'pi pi-fw pi-chart-bar' , routerLink: ['/dashboard/informes']}
+              //{label: 'Usuarios', icon: 'pi pi-fw pi-user-minus' , routerLink: ['/dashboard/usuarios']}
           ]
       },
       {
@@ -49,15 +49,15 @@ export class NavbarComponent implements OnInit {
              // {label: 'Cambiar contraseña', icon: 'pi pi-fw pi-lock' , routerLink: ['/dashboard/contrasena']},
               
           ]
-      },
+      },*/
       {
           label: 'Sistema',
           icon: 'pi pi-fw pi-cog',
           items: [
-             // {label: 'Perfiles', icon: 'pi pi-fw pi-users' , routerLink: ['/dashboard/perfiles']},
+             {label: 'Usuarios', icon: 'pi pi-fw pi-user-minus' , routerLink: ['/dashboard/usuarios']}
               
           ]
-      }*/
+      }
   ];
   }
 

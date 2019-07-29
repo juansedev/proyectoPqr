@@ -21,13 +21,53 @@ height: 3px !important;
 .label-right{
     text-align: right !important;
     margin-right: 7px ;
-}
-
-.class-input{
-    margin-bottom: 4px;
+    margin-left: 4px ;
 }
 
 .class-button{
     margin-bottom: 3px;
+    text-align: center !important;
+    margin-right: 10px;
 }
 
+
+.class-div-ppal {
+    //background-color: #fafafa;
+    //margin-top: 10px;
+    margin-bottom: 10px;
+    //margin-right: 150px;
+    //margin-left: 80px;
+    //border: 2px solid #ccc;
+    /* IMPORTANTE */
+    //text-align: center;
+  }
+
+  .class-div-group {
+    background-color: #fafafa;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    //margin-right: 150px;
+    //margin-left: 80px;
+    //border: 2px solid #ccc;
+    /* IMPORTANTE */
+    //text-align: center;
+  }
+
+  .class-input {
+    //background-color: #fafafa;
+    margin-bottom: 5px;
+    //margin-right: 150px;
+    margin-left: 5px;
+    //border: 2px solid #ccc;
+    /* IMPORTANTE */
+    //text-align: center;
+  }
+
+  .class-dropdonw{
+    margin-top: 5px;
+  }
+  
+  .footer{
+    text-align: center !important;
+    
+  }

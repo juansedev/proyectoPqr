@@ -20,7 +20,9 @@ import {CalendarModule} from 'primeng/calendar';
 import {SpinnerModule} from 'primeng/spinner';
 import { ConfirmDialogModule } from 'primeng/primeng';
 import {CardModule} from 'primeng/card';
-import { FooterComponent } from './footer/footer.component';
+import {FieldsetModule} from 'primeng/fieldset';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+
 
 
 @NgModule({
@@ -62,11 +64,14 @@ import { FooterComponent } from './footer/footer.component';
     CalendarModule,
     SpinnerModule,
     ConfirmDialogModule,
-    CardModule
+    CardModule,
+    FieldsetModule,
+    CalendarModule,
+    ScrollPanelModule
   ],
 declarations: [
 // ContentHeaderComponent,
 // BreadcrumbComponent
-FooterComponent]
+]
 })
 export class SharedModule { }
