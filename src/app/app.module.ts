@@ -12,12 +12,17 @@ import { SharedModule } from './component/share/share.module';
 import { HomeComponent } from './component/home/home.component';
 import { ConstantService } from 'src/app/services/constant.service';
 import { GlobalService } from 'src/app/services/global.service';
+import { AuthGuardService } from 'src/app/services/auth-guard.service'
+import { AuthService } from 'src/app/services/auth.service'
+
 
 /*PRIMENG*/
 import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
+import { LoginComponent } from './component/login/login.component';
+
 
 
 
@@ -27,7 +32,8 @@ AppComponent,
 DashboardComponent,
 NavbarComponent,
 HomeComponent,
-FooterComponent
+FooterComponent,
+LoginComponent
 ],
 imports: [
 BrowserModule,
@@ -44,7 +50,9 @@ SharedModule
 ],
 providers: [
   ConstantService,
-  GlobalService],
+  GlobalService,
+  AuthGuardService,
+  AuthService],
 bootstrap: [AppComponent]
 })
 export class AppModule { }
