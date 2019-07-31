@@ -91,7 +91,7 @@ export class CodigoDaneListComponent implements OnInit {
       v: [this.lcConsulta, this.lcSelectedFiltroStd],
       l: [true, false]
     };*/
-    this.gService.getAll(this.constant.tiposServicios, this.lcFiltros)
+    this.gService.getAll(this.constant.servicios, this.lcFiltros)
       .subscribe(
         (data: CodigoDane[]) => this.lcListItems = data,
         error => {
@@ -158,7 +158,7 @@ export class CodigoDaneListComponent implements OnInit {
         ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
-        this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
+        this.gService.delete(this.constant.servicio, SelectedRow['id'])
           .subscribe(
             (data: CodigoDane) => {
               this.messageService.add({

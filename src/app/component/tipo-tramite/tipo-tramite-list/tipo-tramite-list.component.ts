@@ -160,7 +160,7 @@ export class TipoTramiteListComponent implements OnInit {
           ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
-        this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
+        this.gService.delete(this.constant.servicio, SelectedRow['id'])
           .subscribe(
             (data: TiposTramite) => {
               this.messageService.add({

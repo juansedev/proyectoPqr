@@ -66,7 +66,7 @@ export class TipoServicioListComponent implements OnInit {
     ];
     this.lcSelectedFiltroStd = { label: 'Activos', value: 1 };
 
-    this.eventos.servicioBusqueda.subscribe(() => console.log('emitida la busqueda'));
+    this.eventos.serviciosBusqueda.subscribe(() => console.log('emitida la busqueda'));
     this.eventos.servicioCreacion.subscribe((data: any) => {
       console.log('creacion emitida');
       this.lcListItems.push(data);
@@ -92,7 +92,7 @@ export class TipoServicioListComponent implements OnInit {
       v: [this.lcConsulta, this.lcSelectedFiltroStd],
       l: [true, false]
     };*/
-    this.gService.getAll(this.constant.tiposServicios, this.lcFiltros)
+    this.gService.getAll(this.constant.servicios, this.lcFiltros)
       .subscribe(
         (data: TipoServicio[]) => this.lcListItems = data,
         error => {
@@ -161,7 +161,7 @@ export class TipoServicioListComponent implements OnInit {
         ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
-        this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
+        this.gService.delete(this.constant.servicio, SelectedRow['id'])
           .subscribe(
             (data: TipoServicio) => {
               this.messageService.add({

@@ -40,7 +40,7 @@ export class DetalleCausalFormComponent implements OnInit {
     }
   
     buscar(id) {
-      this.gService.getBy(this.constant.tipoServicio, id)
+      this.gService.getBy(this.constant.servicio, id)
         .subscribe(
           (data: Causal) => {
             this.comienzo = new Date('1970-01-01T' );// + data.comienzo);
@@ -62,7 +62,7 @@ export class DetalleCausalFormComponent implements OnInit {
       //this.item.fin = this.fin.getTime();
       //console.log(this.item.fin);
       console.log(this.item);
-      this.gService.save(this.constant.tipoServicio, this.item)
+      this.gService.save(this.constant.servicio, this.item)
         .subscribe(
           (data: Causal) => {
             this.confirmationService.confirm({
@@ -90,7 +90,7 @@ export class DetalleCausalFormComponent implements OnInit {
     }
   
     onUpdate() {
-      this.gService.update(this.constant.tipoServicio, this.item)
+      this.gService.update(this.constant.servicio, this.item)
         .subscribe(
           (data: Causal) => {
             this.messageService.add({ severity: 'info', summary: 'Verifique', detail: 'Registro exitoso' });

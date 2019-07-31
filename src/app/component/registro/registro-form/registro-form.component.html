@@ -12,7 +12,7 @@
                   Fecha Radicación(*):
                 </div>
                 <div class="ui-grid-col-4 class-input ">
-                  <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+                  <p-calendar  [showIcon]="true"></p-calendar>
                 </div>
                 <div class="ui-grid-2 ui-sd-12  class-input label-right">
                   ID Factura:
@@ -27,8 +27,11 @@
                   Tipo de Servicio(*):
                 </div>
                 <div class="ui-grid-col-3 class-dropdown ">
-                  <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
-                      required></p-dropdown>
+                  <p-dropdown [options]="tipoServicioList" name="tiposerv" [(ngModel)]="item.nombre" placeholder="Seleccione un tipo" optionLabel="name" [showClear]="true">
+                  </p-dropdown>
+                <!--  <p-dropdown><input type="text" 
+                    optionLabel="name" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                      required></p-dropdown> -->
                 </div>
                 <div class="ui-grid-3 label-right  ">
                   Código DANE(*):
@@ -99,7 +102,7 @@
                     Fecha de Respuesta(*):
                   </div>
                   <div class="ui-grid-col-4 class-input ">
-                    <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+                    <p-calendar  [showIcon]="true"></p-calendar>
                   </div>
                   <div class="ui-grid-2 label-right  ">
                     Tipo de Respuesta(*):
@@ -115,7 +118,7 @@
                     Fecha de Notificación(*):
                   </div>
                   <div class="ui-grid-col-4 class-input ">
-                    <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+                    <p-calendar  [showIcon]="true"></p-calendar>
                   </div>
                   <div class="ui-grid-2 label-right  ">
                     Tipo de Notificación(*):

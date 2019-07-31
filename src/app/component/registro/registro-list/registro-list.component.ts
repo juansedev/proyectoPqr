@@ -71,15 +71,15 @@ export class RegistroListComponent implements OnInit {
       ];
       this.lcSelectedFiltroStd = { label: 'Activos', value: 1 };
   
-      this.eventos.servicioBusqueda.subscribe(() => console.log('emitida la busqueda'));
-      this.eventos.servicioCreacion.subscribe((data: any) => {
+      this.eventos.documentosBusqueda.subscribe(() => console.log('emitida la busqueda'));
+      this.eventos.documentoCreacion.subscribe((data: any) => {
         console.log('creacion emitida');
         this.lcListItems.push(data);
         // console.log('fases', this.fases);
       });
   
   
-      this.eventos.servicioActualizacion.subscribe((data: any) => {
+      this.eventos.documentoActualizacion.subscribe((data: any) => {
         this.lcListItems = this.lcListItems.map((item: any) => {
           if (item.id === data.id) {
             item = Object.assign({}, item, data);
@@ -97,7 +97,7 @@ export class RegistroListComponent implements OnInit {
         v: [this.lcConsulta, this.lcSelectedFiltroStd],
         l: [true, false]
       };*/
-      this.gService.getAll(this.constant.tiposServicios, this.lcFiltros)
+      this.gService.getAll(this.constant.documentos, this.lcFiltros)
         .subscribe(
           (data: Registro[]) => this.lcListItems = data,
           error => {
@@ -166,7 +166,7 @@ export class RegistroListComponent implements OnInit {
           ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
         icon: 'fa fa-trash',
         accept: () => {
-          this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
+          this.gService.delete(this.constant.documento, SelectedRow['id'])
             .subscribe(
               (data: Registro) => {
                 this.messageService.add({

@@ -6,6 +6,7 @@ import {
 import { GlobalService } from 'src/app/services/global.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Registro } from 'src/app/clases/registro.class';
+import { TipoServicio } from 'src/app/clases/tipoServicio.class';
 
 @Component({
   selector: 'app-registro-form',
@@ -21,7 +22,7 @@ export class RegistroFormComponent implements OnInit {
     editing: boolean;
     comienzo = new Date();
     fin = new Date();
-  
+    tipoServicioList = [];
     constructor(
       public dynamicDialogRef: DynamicDialogRef,
       public dynamicDialogConfig: DynamicDialogConfig,
@@ -40,10 +41,11 @@ export class RegistroFormComponent implements OnInit {
       }else {
         this.item.activo=true;
       }
+      this.fnBuscarTipoServicio();
     }
   
     buscar(id) {
-      this.gService.getBy(this.constant.tipoServicio, id)
+      this.gService.getBy(this.constant.documento, id)
         .subscribe(
           (data: Registro) => {
             this.comienzo = new Date('1970-01-01T' );// + data.comienzo);
@@ -53,6 +55,27 @@ export class RegistroFormComponent implements OnInit {
           error => {
             this.messageService.add({ severity: 'error', summary: 'Verifique', detail: error });
           });
+    }
+
+    fnBuscarTipoServicio() {
+      const filtros = {f:[], v:[], l:[]};
+      this.gService.getAll(this.constant.servicios, filtros)
+      .subscribe(
+        (data: TipoServicio[]) => this.fnConstruirList(data),
+        error => {
+          this.messageService.add({ severity: 'info', summary: 'Verifique', detail: error });
+          /*const snackBarRef = this.snackBar.open(error, 'OK', { duration: 4000 });
+          snackBarRef.onAction().subscribe(() => {
+            snackBarRef.dismiss();
+          });*/
+        });
+    }
+
+    fnConstruirList(data: TipoServicio[]) {
+      data.forEach(element => {
+        this.tipoServicioList.push({code: element['codigo'], name: element['nombre'] })
+      });
+      console.log(this.tipoServicioList);
     }
   
     onSubmit() {
@@ -65,7 +88,7 @@ export class RegistroFormComponent implements OnInit {
       //this.item.fin = this.fin.getTime();
       //console.log(this.item.fin);
       console.log(this.item);
-      this.gService.save(this.constant.tipoServicio, this.item)
+      this.gService.save(this.constant.documento, this.item)
         .subscribe(
           (data: Registro) => {
             this.confirmationService.confirm({
@@ -93,7 +116,7 @@ export class RegistroFormComponent implements OnInit {
     }
   
     onUpdate() {
-      this.gService.update(this.constant.tipoServicio, this.item)
+      this.gService.update(this.constant.documento, this.item)
         .subscribe(
           (data: Registro) => {
             this.messageService.add({ severity: 'info', summary: 'Verifique', detail: 'Registro exitoso' });

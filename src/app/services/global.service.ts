@@ -53,7 +53,7 @@ export class GlobalService {
     this.create_headers();
     const url = `${this.constant.API_URL}/${module}`;
     return this.http.post(url, filtros, { headers: this.headers }).pipe(
-      // tap(() => this.eventos[`${module}Busqueda`].emit()),
+     tap(() => this.eventos[`${module}Busqueda`].emit()),
       catchError(this.handleError));
   }
 

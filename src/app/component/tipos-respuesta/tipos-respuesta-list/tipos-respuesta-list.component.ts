@@ -95,7 +95,7 @@ export class TiposRespuestaListComponent implements OnInit {
       v: [this.lcConsulta, this.lcSelectedFiltroStd],
       l: [true, false]
     };*/
-    this.gService.getAll(this.constant.tiposServicios, this.lcFiltros)
+    this.gService.getAll(this.constant.servicios, this.lcFiltros)
       .subscribe(
         (data: TipoRespuesta[]) => this.lcListItems = data,
         error => {
@@ -164,7 +164,7 @@ export class TiposRespuestaListComponent implements OnInit {
         ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
-        this.gService.delete(this.constant.tipoServicio, SelectedRow['id'])
+        this.gService.delete(this.constant.servicio, SelectedRow['id'])
           .subscribe(
             (data: TipoRespuesta) => {
               this.messageService.add({
