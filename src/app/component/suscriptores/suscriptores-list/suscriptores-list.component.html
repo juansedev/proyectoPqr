@@ -4,14 +4,14 @@
     <div class="ui-g">
       <div class="ui-sm-12 ui-g-8">
         <div class="form-inline">
-          <div class="ui-sm-12 ui-g-2">
+          <div class="ui-sm-12 ui-g-3">
             <p-dropdown [options]="lcFiltroConsulta" [(ngModel)]="lcSelectedFiltro" optionLabel="label"
               [autoWidth]="false" [style]="{'width':'100%'}"></p-dropdown>
           </div>
           <div class="ui-sm-12 ui-g-3">
             <input type="text" pInputText placeholder="" name="lcConsulta" [(ngModel)]="lcConsulta" class="uppercase">
           </div>
-          <div class="ui-sm-12 ui-g-2">
+          <div class="ui-sm-12 ui-g-3">
             <p-dropdown [options]="lcFiltroStd" optionLabel="label" [(ngModel)]="lcSelectedFiltroStd" [autoWidth]="true"
               [autoWidth]="false" [style]="{'width':'100%'}"></p-dropdown>
           </div>

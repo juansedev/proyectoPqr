@@ -54,10 +54,10 @@ export class SuscriptoresListComponent implements OnInit {
     ];
 
     this.lcFiltroConsulta = [
-      { label: 'Cedula', value: 'bid' },
-      { label: 'Nombre', value: 'nme' }
+      { label: 'Cedula', value: 'cedula' },
+      { label: 'Nombre', value: 'nombre' }
     ];
-    this.lcSelectedFiltro = { label: 'Cedula', value: 'bid' };
+    this.lcSelectedFiltro = { label: 'Cedula', value: 'cedula' };
 
     this.lcFiltroStd = [
       { label: 'Todos', value: '' },
@@ -66,15 +66,15 @@ export class SuscriptoresListComponent implements OnInit {
     ];
     this.lcSelectedFiltroStd = { label: 'Activos', value: 1 };
 
-    this.eventos.servicioBusqueda.subscribe(() => console.log('emitida la busqueda'));
-    this.eventos.servicioCreacion.subscribe((data: any) => {
+    this.eventos.suscriptoresBusqueda.subscribe(() => console.log('emitida la busqueda'));
+    this.eventos.suscriptorCreacion.subscribe((data: any) => {
       console.log('creacion emitida');
       this.lcListItems.push(data);
       // console.log('fases', this.fases);
     });
 
 
-    this.eventos.servicioActualizacion.subscribe((data: any) => {
+    this.eventos.suscriptorActualizacion.subscribe((data: any) => {
       this.lcListItems = this.lcListItems.map((item: any) => {
         if (item.id === data.id) {
           item = Object.assign({}, item, data);
@@ -87,12 +87,14 @@ export class SuscriptoresListComponent implements OnInit {
   }
 
   fnBuscar() {
-    /*this.lcFiltros = {
+    this.lcFiltros = {
+      // tslint:disable-next-line:no-string-literal
       f: [this.lcSelectedFiltro['value'], 'estado'],
-      v: [this.lcConsulta, this.lcSelectedFiltroStd],
+      // tslint:disable-next-line:no-string-literal
+      v: [this.lcConsulta, this.lcSelectedFiltroStd['value']],
       l: [true, false]
-    };*/
-    this.gService.getAll(this.constant.servicios, this.lcFiltros)
+    };
+    this.gService.getAll(this.constant.susciptores, this.lcFiltros)
       .subscribe(
         (data: Suscriptores[]) => this.lcListItems = data,
         error => {
@@ -131,6 +133,7 @@ export class SuscriptoresListComponent implements OnInit {
   }
 
   fnPruebaDialog(editing, id) {
+    // tslint:disable-next-line:object-literal-shorthand
     const data = { editing: editing, id: id };
     const dialogConfig = new DynamicDialogConfig();
     dialogConfig.header = 'Suscriptores';
@@ -158,17 +161,17 @@ export class SuscriptoresListComponent implements OnInit {
     this.confirmationService.confirm({
       header: 'Confirmación',
       message: `<center>¿Está seguro de eliminar el registro <br>
-          ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
+          ${SelectedRow.id} - ${SelectedRow.nombre}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
-        this.gService.delete(this.constant.servicio, SelectedRow['id'])
+        this.gService.delete(this.constant.suscriptor, SelectedRow.id)
           .subscribe(
             (data: Suscriptores) => {
               this.messageService.add({
                 severity: 'success', summary: 'Registro Eliminado',
                 detail: 'Registro Eliminado Satisfactoriamente'
               });
-              this.lcListItems = this.lcListItems.filter((item) => item.id !== SelectedRow['id']);
+              this.lcListItems = this.lcListItems.filter((item) => item.id !== SelectedRow.id);
             },
             error => {
               this.messageService.add({ severity: 'error', summary: 'Error', detail: error });

@@ -18,7 +18,7 @@ export class ConstantService {
   public usuario = 'usuario';
   public usuarios = 'usuarios';
   public suscriptor = 'suscriptor';
-  public susciptores = 'susciptores';
+  public susciptores = 'suscriptores';
   public causal = 'causal';
   public causales = 'causales';
   public informe = 'informe';

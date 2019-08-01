@@ -53,10 +53,10 @@ export class TiposNotificacionListComponent implements OnInit {
     ];
 
     this.lcFiltroConsulta = [
-      { label: 'Código', value: 'bid' },
-      { label: 'Nombre', value: 'nme' }
+      { label: 'Código', value: 'codigo' },
+      { label: 'Nombre', value: 'nombre' }
     ];
-    this.lcSelectedFiltro = { label: 'Codigo', value: 'bid' };
+    this.lcSelectedFiltro = { label: 'Codigo', value: 'codigo' };
 
     this.lcFiltroStd = [
       { label: 'Todos', value: '' },
@@ -65,15 +65,15 @@ export class TiposNotificacionListComponent implements OnInit {
     ];
     this.lcSelectedFiltroStd = { label: 'Activos', value: 1 };
 
-    this.eventos.servicioBusqueda.subscribe(() => console.log('emitida la busqueda'));
-    this.eventos.servicioCreacion.subscribe((data: any) => {
+    this.eventos.notificacionesBusqueda.subscribe(() => console.log('emitida la busqueda'));
+    this.eventos.notificacionCreacion.subscribe((data: any) => {
       console.log('creacion emitida');
       this.lcListItems.push(data);
       // console.log('fases', this.fases);
     });
 
 
-    this.eventos.servicioActualizacion.subscribe((data: any) => {
+    this.eventos.notificacionActualizacion.subscribe((data: any) => {
       this.lcListItems = this.lcListItems.map((item: any) => {
         if (item.id === data.id) {
           item = Object.assign({}, item, data);
@@ -86,12 +86,14 @@ export class TiposNotificacionListComponent implements OnInit {
   }
 
   fnBuscar() {
-    /*this.lcFiltros = {
-      f: [this.lcSelectedFiltro['value'], 'estado'],
-      v: [this.lcConsulta, this.lcSelectedFiltroStd],
+    this.lcFiltros = {
+      // tslint:disable-next-line:no-string-literal
+      f: [this.lcSelectedFiltro['value'], 'activo'],
+      // tslint:disable-next-line:no-string-literal
+      v: [this.lcConsulta, this.lcSelectedFiltroStd['value']],
       l: [true, false]
-    };*/
-    this.gService.getAll(this.constant.servicios, this.lcFiltros)
+    };
+    this.gService.getAll(this.constant.notificaciones, this.lcFiltros)
       .subscribe(
         (data: TipoNotificacion[]) => this.lcListItems = data,
         error => {
@@ -130,6 +132,7 @@ export class TiposNotificacionListComponent implements OnInit {
   }
 
   fnPruebaDialog(editing, id) {
+    // tslint:disable-next-line:object-literal-shorthand
     const data = { editing: editing, id: id };
     const dialogConfig = new DynamicDialogConfig();
     dialogConfig.header = 'Tipo de Notifiación';
@@ -157,17 +160,17 @@ export class TiposNotificacionListComponent implements OnInit {
     this.confirmationService.confirm({
       header: 'Confirmación',
       message: `<center>¿Está seguro de eliminar el registro <br>
-          ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
+          ${SelectedRow.id} - ${SelectedRow.nombre}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
-        this.gService.delete(this.constant.servicio, SelectedRow['id'])
+        this.gService.delete(this.constant.notificacion, SelectedRow.id)
           .subscribe(
             (data: TipoNotificacion) => {
               this.messageService.add({
                 severity: 'success', summary: 'Registro Eliminado',
                 detail: 'Registro Eliminado Satisfactoriamente'
               });
-              this.lcListItems = this.lcListItems.filter((item) => item.id !== SelectedRow['id']);
+              this.lcListItems = this.lcListItems.filter((item) => item.id !== SelectedRow.nombre);
             },
             error => {
               this.messageService.add({ severity: 'error', summary: 'Error', detail: error });

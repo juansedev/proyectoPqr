@@ -9,7 +9,7 @@ export class AuthGuardService implements  CanActivate {
 
   constructor(
     private router: Router,
-    private _authService: AuthService
+    private authService: AuthService
   ) { }
 
   /*Meto para bloquear acceso a rutas privadas o que necesitan login*/
@@ -17,8 +17,8 @@ export class AuthGuardService implements  CanActivate {
     // console.log('Next', next);
     /*console.log('state', state);*/
     const empresa = localStorage.getItem('lcEmpresa');
-    //this.lcEmpresa = JSON.parse(empresa);
-    if (this._authService.isAuthenticated()) {
+    // this.lcEmpresa = JSON.parse(empresa);
+    if (this.authService.isAuthenticated()) {
       /*if (next.url[0].path !== 'login' && next.url[0].path !== 'SelectEnterprise') {
         if (this.lcEmpresa === null || this.lcEmpresa === undefined || !this.lcEmpresa) {
           this.router.navigate(['/SelectEnterprise']);
