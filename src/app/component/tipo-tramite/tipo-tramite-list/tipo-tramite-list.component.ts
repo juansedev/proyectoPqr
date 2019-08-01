@@ -136,7 +136,7 @@ export class TipoTramiteListComponent implements OnInit {
     const data = { editing: editing, id: id };
     const dialogConfig = new DynamicDialogConfig();
     dialogConfig.header = 'Tipo de Tramite';
-    dialogConfig.width = '30%';
+    dialogConfig.width = '40%';
     dialogConfig.closeOnEscape = true;
     dialogConfig.data = data;
     const ref = this.dialogService.open(TipoTramiteFormComponent, dialogConfig);
@@ -160,7 +160,7 @@ export class TipoTramiteListComponent implements OnInit {
     this.confirmationService.confirm({
       header: 'Confirmación',
       message: `<center>¿Está seguro de eliminar el registro <br>
-          ${SelectedRow.id} - ${SelectedRow.nombre}?</center>`,
+          ${SelectedRow.codigo}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
         this.gService.delete(this.constant.tramite, SelectedRow.id)

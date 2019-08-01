@@ -5,7 +5,7 @@ import {
 } from 'primeng/primeng';
 import { GlobalService } from 'src/app/services/global.service';
 import { ConstantService } from 'src/app/services/constant.service';
-import { CodigoDane } from 'src/app/clases/codigoDane.class'; 
+import { CodigoDane } from 'src/app/clases/codigoDane.class';
 
 @Component({
   selector: 'app-codigo-dane-form',
@@ -14,7 +14,7 @@ import { CodigoDane } from 'src/app/clases/codigoDane.class';
 })
 export class CodigoDaneFormComponent implements OnInit {
 
-  item: CodigoDane = new CodigoDane( 0, null, true );
+  item: CodigoDane = new CodigoDane(0, null, true);
   lcActividades: any = [];
   editing: boolean;
   comienzo = new Date();
@@ -30,24 +30,20 @@ export class CodigoDaneFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.item = this.dynamicDialogConfig.data;// valida si esta para editar o no
+    this.item = this.dynamicDialogConfig.data; // valida si esta para editar o no
     // tslint:disable-next-line:no-unused-expression
     if (this.item.id !== null) {
       this.buscar(this.item.id);
       this.editing = true;
-    }else {
-      this.item.activo=true;
+    } else {
+      this.item.activo = true;
     }
   }
 
   buscar(id) {
-    this.gService.getBy(this.constant.servicio, id)
+    this.gService.getBy(this.constant.ciudad, id)
       .subscribe(
-        (data: CodigoDane) => {
-          this.comienzo = new Date('1970-01-01T' );// + data.comienzo);
-          this.fin = new Date('1970-01-01T' );// + data.fin);
-          this.item = data;    
-       },
+        (data: CodigoDane) => this.item = data,
         error => {
           this.messageService.add({ severity: 'error', summary: 'Verifique', detail: error });
         });
@@ -59,25 +55,26 @@ export class CodigoDaneFormComponent implements OnInit {
   }
 
   onCreate() {
-    //this.item.comienzo = this.comienzo.getTime();
-    //this.item.fin = this.fin.getTime();
-    //console.log(this.item.fin);
+    // this.item.comienzo = this.comienzo.getTime();
+    // this.item.fin = this.fin.getTime();
+    // console.log(this.item.fin);
     console.log(this.item);
-    this.gService.save(this.constant.servicio, this.item)
+    this.gService.save(this.constant.ciudad, this.item)
       .subscribe(
         (data: CodigoDane) => {
           this.confirmationService.confirm({
-            message:'¿Desea seguir guardando?',
+            message: '¿Desea seguir guardando?',
             header: 'Confirmación',
             icon: 'fa fa-info-circle',
             accept: () => {
               this.item = new CodigoDane(0, null, true);
-             },
-             reject: () => {
-               //this.messageService.add({ severity: 'info', summary: 'Proceso Cancelado', detail: 'Se canceló la eliminación del registro' });
-               this.dynamicDialogRef.close();
-             },
-           });
+            },
+            reject: () => {
+              // this.messageService.add({ severity: 'info', summary: 'Proceso Cancelado',
+              // detail: 'Se canceló la eliminación del registro' });
+              this.dynamicDialogRef.close();
+            },
+          });
 
 
           this.messageService.add({ severity: 'info', summary: 'Verifique', detail: 'Registro exitoso' });

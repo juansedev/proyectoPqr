@@ -18,14 +18,14 @@
           <div class="ui-sm-10 ui-g-2">
             <button pButton type="button" class="gray-btn btn-buscar class-button " label="Buscar" (click)="fnBuscar()"
               icon="fa fa-search"></button>
-          </div>          
+          </div>
         </div>
         <br>
       </div>
       <div class="ui-sm-12 ui-g-12">
-        <p-table [columns]="lcHeaders" [value]="lcListItems" [paginator]="true" [rows]="10"
-        resizableColumns="true" selectionMode="single" [(selection)]="lcSelectedRow" dataKey="id" (dblclick)="fnPropiedades()">
-          <ng-template pTemplate="header" let-columns >
+        <p-table [columns]="lcHeaders" [value]="lcListItems" [paginator]="true" [rows]="10" resizableColumns="true"
+          selectionMode="single" [(selection)]="lcSelectedRow" dataKey="id" (dblclick)="fnPropiedades()">
+          <ng-template pTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns" [pSortableColumn]="col.field" [style.width]="col.width" pResizableColumn>
                 {{col.header}}
@@ -44,7 +44,9 @@
             <tr [pSelectableRow]="rowData" (dblclick)="fnAsignarRow(rowData)">
               <td class="ui-resizable-column"> {{rowData['codigo']}}</td>
               <td class="ui-resizable-column"> {{rowData['nombre'] }}</td>
-              <td class="ui-resizable-column" [style.text-align]="'center'"> <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['activo']" disabled ></p-checkbox></td>
+              <td class="ui-resizable-column" [style.text-align]="'center'">
+                <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['activo']" disabled></p-checkbox>
+              </td>
               <!-- <td class="ui-resizable-column" [style.text-align]="'center'">
               <p-checkbox *ngIf="rowData['enb'] !== undefined" [(ngModel)]="rowData['enb']" binary="true"
                 disabled="true"></p-checkbox>
@@ -65,3 +67,4 @@
     </div>
   </p-panel>
 </div>
+<p-confirmDialog width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>

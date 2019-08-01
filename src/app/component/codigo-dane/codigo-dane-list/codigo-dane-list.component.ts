@@ -134,7 +134,7 @@ export class CodigoDaneListComponent implements OnInit {
     const data = { editing: editing, id: id };
     const dialogConfig = new DynamicDialogConfig();
     dialogConfig.header = 'Codigo Dane';
-    dialogConfig.width = '30%';
+    dialogConfig.width = '40%';
     dialogConfig.closeOnEscape = true;
     dialogConfig.data = data;
     const ref = this.dialogService.open(CodigoDaneFormComponent, dialogConfig);
@@ -158,7 +158,7 @@ export class CodigoDaneListComponent implements OnInit {
     this.confirmationService.confirm({
       header: 'Confirmación',
       message: `<center>¿Está seguro de eliminar el registro <br>
-        ${SelectedRow.id} - ${SelectedRow.id}?</center>`,
+        ${SelectedRow.codigo}?</center>`,
       icon: 'fa fa-trash',
       accept: () => {
         this.gService.delete(this.constant.ciudad, SelectedRow.id)

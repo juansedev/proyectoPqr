@@ -1,17 +1,78 @@
 <form (ngSubmit)="onSubmit()" #servForm="ngForm" autocomplete="off">
   <div class="ui-g">
-    <div class="ui-g-8">
-      <label>Código(*)</label><br>
-      <input type="text" pInputText name="codigo" style="width: 100%" [(ngModel)]="item.codigo" required>
-      <label>Nombre(*)</label><br>
-      <input type="text" pInputText name="nombre" style="width: 100%" [(ngModel)]="item.nombre" required>
-      <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo"></p-checkbox>
+    <div class="ui-g-9">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+        <div classs="ui-g-11  ui-sm-12 class-div-group">
+          <div class="ui-grid-row top-4  label-right">
+            <div class="ui-grid-col-3 ui-sd-12 ">
+              <label>Código(*):</label>
+            </div>
+            <div class="ui-grid-col-5 class-input ">
+              <input type="text" pInputText name="codigo" style="width: 100%" [(ngModel)]="item.codigo" required>
+            </div>
+            <div class="ui-grid-col-6 class-input ">
+              <p-checkbox name="activo" binary="true" label="Activo" [(ngModel)]="item.activo"></p-checkbox>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4 label-right">
+            <div class="ui-grid-col-3 ui-sd-12 ">
+              <label>Nombre(*):</label>
+            </div>
+            <div class="ui-grid-col-11 class-input">
+              <input type="text" pInputText name="nombre" style="width: 100%" [(ngModel)]="item.nombre" required>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4 label-right">
+            <div class="ui-grid-col-3 ui-sd-12 ">
+              <label>Tipo Servicio:</label>
+            </div>
+            <div class="ui-grid-col-3 class-input ">
+              <p-checkbox name="acueducto" binary="true" label="Acueducto" [(ngModel)]="item.acueducto"></p-checkbox>
+            </div>
+            <div class="ui-grid-col-2 class-input ">
+              <p-checkbox name="aseo" binary="true" label="Aseo" [(ngModel)]="item.aseo"></p-checkbox>
+            </div>
+            <div class="ui-grid-col-4 class-input ">
+              <p-checkbox name="alcantarillado" binary="true" label="Alcantarillado" [(ngModel)]="item.alcantarillado">
+              </p-checkbox>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4 label-right">
+            <div class="ui-grid-col-3 ui-sd-12 ">
+              <label>Tipo(*):</label>
+            </div>
+            <div class="ui-grid-col-5 class-input ">
+              <p-dropdown placeholder="Seleccione" [options]="tipo" name="tipo" [(ngModel)]="item.tipo" filter="true">
+                <ng-template let-tipo pTemplate="item">
+                  <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                    <div style="font-size:14px;float:left;margin-top:4px">{{tipo.label}}</div>
+                  </div>
+                </ng-template>
+              </p-dropdown>
+            </div>
+          </div>
+          <div class="ui-grid-row top-4  label-right">
+            <div class="ui-grid-col-3 ui-sd-12 ">
+              <label>Definicion:</label>
+            </div>
+            <div class="ui-grid-col-9 class-input ">
+              <textarea rows="10" cols="30" [(ngModel)]="item.definicion" pInputTextarea
+                style="width: 100%" rows="4" onresize="false" name="definicion"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="ui-g-2">
-      <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
-        label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
-      <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
-        label="Salir" type="button"></button>
+    <div class="ui-g-2  ui-sm-12">
+      <div class="ui-grid-row top-4 class-button">
+        <button pButton class="ui-button-success" [disabled]="!servForm.valid" type="submit" style="width: 100px"
+          label="{{ editing ? 'Actualizar':'Crear' }}" icon="fa fa-file-text"></button>
+      </div>
+      <div class="ui-grid-row top-4 class-button">
+        <button pButton type="button" class="ui-button-info" (click)="onClose()" icon="fa fa-trash" style="width: 100px"
+          label="Salir" type="button"></button>
+      </div>
     </div>
   </div>
 </form>
+<p-confirmDialog width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>
