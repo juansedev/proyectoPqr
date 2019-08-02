@@ -18,9 +18,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro-list.component.scss']
 })
 export class RegistroListComponent implements OnInit {
-
-  
-  
     lcHeaders: { field: string; header: string; width: string; }[]; // cabecera de la tabla se le pueden poner mas configuraciones
     lcFiltroConsulta: SelectItem[];
     lcFiltroStd: SelectItem[];
@@ -50,19 +47,20 @@ export class RegistroListComponent implements OnInit {
   
     ngOnInit() {
       this.lcHeaders = [
-        { field: 'numero', header: 'No.', width: '5%' },
-        { field: 'tipoTramite', header: 'Tipo Tramite', width: '10%' },
-        { field: 'codigoDane', header: 'Código dane', width: '10%' },
-        { field: 'cedula', header: 'Cedula', width: '10%' },      
-        { field: 'nombre', header: 'Nombre', width: '40%' },
+        { field: 'id', header: 'No.', width: '5%' },
+        { field: 'tramitenom', header: 'Trámite', width: '13%' },
+        { field: 'danenom', header: 'Ciudad', width: '20%' },
+        { field: 'servicionom', header: 'Servicio', width: '10%' },
+        { field: 'causalnom', header: 'Causal', width: '10%' },      
+        { field: 'numcuentaced', header: 'Cédula', width: '10%' },   
+        { field: 'cuentanom', header: 'Nombre', width: '30%' }
 
       ];
   
       this.lcFiltroConsulta = [
-        { label: 'Número', value: 'bid' },
-        { label: 'Nombre', value: 'nme' }
+        { label: 'Nombre del Trámite', value: 'trm.trmnombre' }
       ];
-      this.lcSelectedFiltro = { label: 'Número', value: 'bid' };
+      this.lcSelectedFiltro = { label: 'Nombre del Trámite', value: 'trm.trmnombre'};
   
       this.lcFiltroStd = [
         { label: 'Todos', value: '' },
@@ -74,7 +72,8 @@ export class RegistroListComponent implements OnInit {
       this.eventos.documentosBusqueda.subscribe(() => console.log('emitida la busqueda'));
       this.eventos.documentoCreacion.subscribe((data: any) => {
         console.log('creacion emitida');
-        this.lcListItems.push(data);
+        this.fnBuscar();
+        // this.lcListItems.push(data);
         // console.log('fases', this.fases);
       });
   
@@ -82,7 +81,8 @@ export class RegistroListComponent implements OnInit {
       this.eventos.documentoActualizacion.subscribe((data: any) => {
         this.lcListItems = this.lcListItems.map((item: any) => {
           if (item.id === data.id) {
-            item = Object.assign({}, item, data);
+            this.fnBuscar();
+            // item = Object.assign({}, item, data);
           }
           return item;
         });
@@ -92,11 +92,11 @@ export class RegistroListComponent implements OnInit {
     }
   
     fnBuscar() {
-      /*this.lcFiltros = {
-        f: [this.lcSelectedFiltro['value'], 'estado'],
-        v: [this.lcConsulta, this.lcSelectedFiltroStd],
-        l: [true, false]
-      };*/
+      this.lcFiltros = {
+        f: [this.lcSelectedFiltro['value']],
+        v: [this.lcConsulta],
+        l: [true]
+      };
       this.gService.getAll(this.constant.documentos, this.lcFiltros)
         .subscribe(
           (data: Registro[]) => this.lcListItems = data,
@@ -136,6 +136,7 @@ export class RegistroListComponent implements OnInit {
     }
   
     fnPruebaDialog(editing, id) {
+      console.log('lcSelectedRow list: ', id);
       const data = { editing: editing, id: id };
       const dialogConfig = new DynamicDialogConfig();
       dialogConfig.header = 'Registro PQR';
@@ -163,7 +164,7 @@ export class RegistroListComponent implements OnInit {
       this.confirmationService.confirm({
         header: 'Confirmación',
         message: `<center>¿Está seguro de eliminar el registro <br>
-          ${SelectedRow['id']} - ${SelectedRow['nombre']}?</center>`,
+          ${SelectedRow['id']} - ${SelectedRow['tramitenom']}?</center>`,
         icon: 'fa fa-trash',
         accept: () => {
           this.gService.delete(this.constant.documento, SelectedRow['id'])

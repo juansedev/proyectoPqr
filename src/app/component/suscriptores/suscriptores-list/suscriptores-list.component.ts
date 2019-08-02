@@ -49,12 +49,12 @@ export class SuscriptoresListComponent implements OnInit {
     this.lcHeaders = [
       { field: 'codigo', header: 'Código', width: '5%' },
       { field: 'nombre', header: 'Nombre', width: '40%' },
-      { field: 'tipo', header: 'Tipo', width: '10%' },
+     // { field: 'tipo', header: 'Tipo', width: '10%' },
       { field: 'activo', header: 'Activo', width: '5%' }
     ];
 
     this.lcFiltroConsulta = [
-      { label: 'Cedula', value: 'cedula' },
+      { label: 'Cédula', value: 'cedula' },
       { label: 'Nombre', value: 'nombre' }
     ];
     this.lcSelectedFiltro = { label: 'Cedula', value: 'cedula' };
@@ -94,7 +94,7 @@ export class SuscriptoresListComponent implements OnInit {
       v: [this.lcConsulta, this.lcSelectedFiltroStd['value']],
       l: [true, false]
     };
-    this.gService.getAll(this.constant.susciptores, this.lcFiltros)
+    this.gService.getAll(this.constant.suscriptores, this.lcFiltros)
       .subscribe(
         (data: Suscriptores[]) => this.lcListItems = data,
         error => {

@@ -4,17 +4,17 @@
     <div class="ui-g">
       <div class="ui-sm-12 ui-g-8">
         <div class="form-inline">
-          <div class="ui-sm-12 ui-g-2">
+          <div class="ui-sm-12 ui-g-3">
             <p-dropdown [options]="lcFiltroConsulta" [(ngModel)]="lcSelectedFiltro" optionLabel="label"
               [autoWidth]="false" [style]="{'width':'100%'}" clas="class-button"></p-dropdown>
           </div>
-          <div class="ui-sm-12 ui-g-3">
-            <input type="text" pInputText placeholder="" name="lcConsulta" [(ngModel)]="lcConsulta" clas="class-button">
+          <div class="ui-sm-12 ui-g-5">
+            <input type="text" style="width: 100%;" pInputText placeholder="" name="lcConsulta" [(ngModel)]="lcConsulta">
           </div>
-          <div class="ui-sm-12 ui-g-2">
+          <!-- <div class="ui-sm-12 ui-g-2">
             <p-dropdown [options]="lcFiltroStd" optionLabel="label" [(ngModel)]="lcSelectedFiltroStd" [autoWidth]="true"
               [autoWidth]="false" [style]="{'width':'100%'}" clas="class-button"></p-dropdown>
-          </div>
+          </div> -->
           <div class="ui-sm-10 ui-g-2">
             <button pButton type="button" class="gray-btn class-button " label="Buscar" (click)="fnBuscar()"
               icon="fa fa-search"></button>
@@ -45,9 +45,16 @@
           </ng-template>
           <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr [pSelectableRow]="rowData" (dblclick)="fnAsignarRow(rowData)">
-              <td class="ui-resizable-column"> {{rowData['codigo']}}</td>
-              <td class="ui-resizable-column"> {{rowData['nombre'] }}</td>
-              <td class="ui-resizable-column" [style.text-align]="'center'"> <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['activo']" disabled ></p-checkbox></td>
+              <td class="ui-resizable-column"> {{rowData['id']}}</td>
+              <td class="ui-resizable-column"> {{rowData['tramitenom'] }}</td>
+              <td class="ui-resizable-column"> {{rowData['danenom'] }}</td>
+              <td class="ui-resizable-column"> {{rowData['servicionom'] }}</td>
+              <td class="ui-resizable-column"> {{rowData['causalnom'] }}</td>
+              <td class="ui-resizable-column"> {{rowData['numcuentaced'] }}</td>
+              <td class="ui-resizable-column"> {{rowData['numcuentanom'] }}</td>
+
+              <!--<td class="ui-resizable-column" [style.text-align]="'center'"> <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['activo']" disabled ></p-checkbox></td>-->
+
               <!-- <td class="ui-resizable-column" [style.text-align]="'center'">
               <p-checkbox *ngIf="rowData['enb'] !== undefined" [(ngModel)]="rowData['enb']" binary="true"
                 disabled="true"></p-checkbox>
@@ -68,3 +75,4 @@
     </div>
   </p-panel>
 </div>
+<p-confirmDialog width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>

@@ -5,7 +5,7 @@ import { RegistroListComponent } from './registro-list/registro-list.component';
 import { MessageService, ConfirmationService, DialogService, DynamicDialogRef} from 'primeng/api';
 import { RegistroFormComponent } from './registro-form/registro-form.component';
 import { SharedModule } from '../share/share.module';
-
+import {DropdownModule} from 'primeng/dropdown';
 export const routes: Routes = [
   { path: '', component: RegistroListComponent, pathMatch: 'full' }
 ];
@@ -13,6 +13,7 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     SharedModule,
+    DropdownModule,
     RouterModule.forChild(routes)
   ],
   entryComponents: [

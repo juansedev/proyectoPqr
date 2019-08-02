@@ -4,12 +4,13 @@ export class Suscriptores {
     constructor(
         public cedula: number,
         public nombre: string,
-        public direccion: string,
-        public telefono1: string,
-        public telefono2: string,
-        public ciudad: string,
-        public activo: boolean,
+        public nuid: string,
+        public direc: string,
+        public telefono: string,
+        public telfon2: string,    
+        public estado: boolean,
         public tipo: string,
+        public ciudad?: number,
         public id?: number        
     ) {}
 }

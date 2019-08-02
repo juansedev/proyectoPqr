@@ -12,13 +12,13 @@
                   Fecha Radicación(*):
                 </div>
                 <div class="ui-grid-col-4 class-input ">
-                  <p-calendar  [showIcon]="true"></p-calendar>
+                  <p-calendar [locale]="es" name="fecha" [(ngModel)]="item.fecha" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
                 </div>
                 <div class="ui-grid-2 ui-sd-12  class-input label-right">
                   ID Factura:
                 </div>
                 <div class="ui-grid-4 class-input">
-                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                  <input type="text" pInputText name="numfactura" style="width: 99%" [(ngModel)]="item.numfactura" required>
                 </div>
               </div>
 
@@ -27,9 +27,17 @@
                   Tipo de Servicio(*):
                 </div>
                 <div class="ui-grid-col-3 class-dropdown ">
-                  <p-dropdown [options]="tipoServicioList" name="tiposerv" [(ngModel)]="item.nombre" placeholder="Seleccione un tipo" optionLabel="name" [showClear]="true">
+                  <!-- <p-dropdown [options]="tipoServicioList" name="tiposerv" [(ngModel)]="item.nombre" placeholder="Seleccione un tipo" optionLabel="name" [showClear]="true">
+                  </p-dropdown>-->
+                  <p-dropdown placeholder="Seleccione" [options]="tipoServicioList" name="servicio"
+                    [(ngModel)]="item.servicio" filter="true">
+                    <ng-template let-tipo pTemplate="item">
+                      <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                        <div style="font-size:14px;float:left;margin-top:4px">{{tipo.label}}</div>
+                      </div>
+                    </ng-template>
                   </p-dropdown>
-                <!--  <p-dropdown><input type="text" 
+                  <!--  <p-dropdown><input type="text" 
                     optionLabel="name" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
                       required></p-dropdown> -->
                 </div>
@@ -37,47 +45,66 @@
                   Código DANE(*):
                 </div>
                 <div class="ui-grid-col-3 class-dropdown ">
-                  <p-dropdown><input type="text" pInputText name="nombre" style="width: 10%" [(ngModel)]="item.nombre"
-                      required></p-dropdown>
-                </div>
-                <div class="ui-grid-4 class-input">
-                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                  <!-- <p-dropdown><input type="text" pInputText name="nombre" style="width: 10%" [(ngModel)]="item.nombre"
+                      required></p-dropdown>-->
+                  <p-dropdown placeholder="Seleccione" [options]="ciudadList" name="dane"
+                    [(ngModel)]="item.dane" filter="true">
+                    <ng-template let-dane pTemplate="item">
+                      <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                        <div style="font-size:14px;float:left;margin-top:4px">{{dane.label}}</div>
+                      </div>
+                    </ng-template>
+                  </p-dropdown>
                 </div>
               </div>
 
               <div class="ui-grid-row top-4  class-input label-right">
                 <div class="ui-grid-3 label-right  ">
-                  Cedula(*):
+                  Cédula(*):
                 </div>
                 <div class="ui-grid-col-3 class-dropdown ">
-                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                  <input type="text" pInputText name="numcuentaced" style="width: 99%" [(ngModel)]="item.numcuentaced" (blur)="fnOnfocus()" required>
                 </div>
                 <div class="ui-grid-col-6 class-input">
-                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                  <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.numcuentanom" required>
                 </div>
               </div>
             </p-fieldset>
             <div style="margin-bottom: 15">
               <p-fieldset>
-                <p-header>Tramite</p-header>
+                <p-header>Trámite</p-header>
 
-                <div class="ui-grid-row top-4  " style="margin-top: 5px  margin-bottom: 5px">
+                <div class="ui-grid-row top-4  " style="margin-top: 5px; margin-bottom: 5px">
                   <div class="ui-grid-2 ui-sd-12 ">
-                    Tipo de Tramite(*):
+                    Tipo de Trámite(*):
                   </div>
                   <div class="ui-grid-col-3 class-dropdown ">
-                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
-                        required></p-dropdown>
+                    <!--  <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                        required></p-dropdown> -->
+                    <p-dropdown placeholder="Seleccione" [options]="tipoTramiteList" name="tramite"
+                      [(ngModel)]="item.tramite" filter="true">
+                      <ng-template let-tramite pTemplate="item">
+                        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                          <div style="font-size:14px;float:left;margin-top:4px">{{tramite.label}}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
                   </div>
                   <div class="ui-grid-3 label-right  ">
                     Código Causal(*):
                   </div>
                   <div class="ui-grid-col-3 class-dropdown ">
-                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 10%" [(ngModel)]="item.nombre"
-                        required></p-dropdown>
-                  </div>
-                  <div class="ui-grid-4 class-input">
-                    <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+                    <!-- <p-dropdown><input type="text" pInputText name="nombre" style="width: 10%" [(ngModel)]="item.nombre"
+                        required></p-dropdown> -->
+                    <p-dropdown placeholder="Seleccione" [options]="codigoCausalList" name="causal"
+                      [(ngModel)]="item.causal" filter="true">
+                      <ng-template let-causal pTemplate="item">
+                        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                          <div style="font-size:14px;float:left;margin-top:4px">{{causal.label}}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+
                   </div>
                 </div>
 
@@ -86,8 +113,8 @@
                     Detalle de causal(*):
                   </div>
                   <div class="ui-grid-col-10 class-dropdown ">
-                    <textarea rows="10" cols="30" pInputTextarea style="width: 756px height: 40px"
-                      autoResize="autoResize"></textarea>
+                    <textarea rows="10" cols="30" [(ngModel)]="item.causaldetalle" pInputTextarea style="width: 756px; height: 40px"
+                      autoResize="autoResize" name="causaldetalle"></textarea>
                   </div>
                 </div>
 
@@ -97,19 +124,27 @@
               <p-fieldset>
                 <p-header>Respuesta y Notificación</p-header>
 
-                <div class="ui-grid-row top-4  class-input label-right" style="margin-top: 5px  margin-bottom: 7px">
+                <div class="ui-grid-row top-4  class-input label-right" style="margin-top: 5px;  margin-bottom: 7px">
                   <div class="ui-grid-2 ui-sd-12 ">
                     Fecha de Respuesta(*):
                   </div>
                   <div class="ui-grid-col-4 class-input ">
-                    <p-calendar  [showIcon]="true"></p-calendar>
+                    <p-calendar [locale]="es" [(ngModel)]="item.respfecha" name="respfecha" [showIcon]="true"></p-calendar>
                   </div>
                   <div class="ui-grid-2 label-right  ">
                     Tipo de Respuesta(*):
                   </div>
                   <div class="ui-grid-col-3 class-dropdown ">
-                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
-                        required></p-dropdown>
+                    <!--  <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                        required></p-dropdown> -->
+                    <p-dropdown placeholder="Seleccione" [options]="tipoRespuestaList" name="respuesta"
+                      [(ngModel)]="item.respuesta" filter="true">
+                      <ng-template let-respuesta pTemplate="item">
+                        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                          <div style="font-size:14px;float:left;margin-top:4px">{{respuesta.label}}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
                   </div>
                 </div>
 
@@ -118,14 +153,22 @@
                     Fecha de Notificación(*):
                   </div>
                   <div class="ui-grid-col-4 class-input ">
-                    <p-calendar  [showIcon]="true"></p-calendar>
+                    <p-calendar [locale]="es" [(ngModel)]="item.notifecha" name="notifecha"  [showIcon]="true"></p-calendar>
                   </div>
                   <div class="ui-grid-2 label-right  ">
                     Tipo de Notificación(*):
                   </div>
                   <div class="ui-grid-col-3 class-dropdown ">
-                    <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
-                        required></p-dropdown>
+                    <!-- <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
+                        required></p-dropdown>-->
+                    <p-dropdown placeholder="Seleccione" [options]="tipoNotificacionList" name="notificacion"
+                      [(ngModel)]="item.notificacion" filter="true">
+                      <ng-template let-notificacion pTemplate="item">
+                        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                          <div style="font-size:14px;float:left;margin-top:4px">{{notificacion.label}}</div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
                   </div>
                 </div>
 
@@ -150,3 +193,4 @@
     </div>
   </div>
 </form>
+

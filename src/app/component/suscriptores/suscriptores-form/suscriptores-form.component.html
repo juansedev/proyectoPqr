@@ -3,15 +3,23 @@
     <div class="ui-g-10">
       <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
         <div classs="ui-g-8  ui-sm-12">
+            <div class="ui-grid-row top-4">
+                <div class="ui-grid-col-2 label-right">
+                  NUID*:
+                </div>
+                <div class="ui-grid-col-7 class-input">
+                  <input pInputText name="nuid" type="text" style="width: 99%" [(ngModel)]="item.nuid" required>
+                </div>                
+              </div>
           <div class="ui-grid-row top-4">
             <div class="ui-grid-col-2 label-right">
               Cedula*:
             </div>
             <div class="ui-grid-col-7 class-input">
-              <input pInputText type="text" placeholder="Required" style="width: 99%" />
+              <input pInputText type="text" name="cedula" [(ngModel)]="item.cedula" style="width: 99%" />
             </div>
-            <div class="ui-grid-col-2 " style="text-align: right "  >
-              <p-checkbox name="activo" binary="true" [(ngModel)]="item.activo" label="Activo" ></p-checkbox><br>
+            <div class="ui-grid-col-2 " style="text-align: right ">
+              <p-checkbox name="activo" binary="true" [(ngModel)]="item.estado" label="Activo"></p-checkbox><br>
             </div>
           </div>
           <div class="ui-grid-row top-4">
@@ -27,21 +35,23 @@
               <label>Dirección(*) </label>
             </div>
             <div class="ui-grid-col-10 class-input">
-              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required>
+              <input type="text" pInputText name="direccion" style="width: 99%" [(ngModel)]="item.direc" required>
             </div>
           </div>
           <div class="ui-grid-row top-4">
             <div class="ui-grid-col-2 label-right">
-              <label>Telefono 1(*) </label>
+              <label>Teléfono 1(*) </label>
             </div>
             <div class="ui-grid-col-4 class-input">
-              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required><br>
+              <input type="text" pInputText name="telefono1" style="width: 99%" [(ngModel)]="item.telefono"
+                required><br>
             </div>
             <div class="ui-grid-col-2 label-right">
               <label>Telefono 2(*) </label>
             </div>
             <div class="ui-grid-col-4 class-input">
-              <input type="text" pInputText name="nombre" style="width: 99%" [(ngModel)]="item.nombre" required><br>
+              <input type="text" pInputText name="telefono2" style="width: 99%" [(ngModel)]="item.telfon2"
+                required><br>
             </div>
           </div>
           <div class="ui-grid-row top-4">
@@ -49,16 +59,22 @@
               <label>Ciudad(*) </label>
             </div>
             <div class="ui-grid-col-4 ">
-              <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
-                  required></p-dropdown>
+              <p-dropdown placeholder="Seleccione" [options]="ciudadList" name="ciudad" [(ngModel)]="item.ciudad"
+                filter="true">
+                <ng-template let-ciudad pTemplate="item">
+                  <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                    <div style="font-size:14px;float:left;margin-top:4px">{{ciudad.label}}</div>
+                  </div>
+                </ng-template>
+              </p-dropdown>
             </div>
 
             <div class="ui-grid-col-2 label-right">
               <label>Tipo(*) </label>
             </div>
             <div class="ui-grid-col-4">
-              <p-dropdown><input type="text" pInputText name="nombre" style="width: 30%" [(ngModel)]="item.nombre"
-                  required></p-dropdown>
+              <p-dropdown [options]="lcFiltroConsulta" name="tipo" [(ngModel)]="lcSelectedFiltro" optionLabel="label"
+              [autoWidth]="false" [style]="{'width':'100%'}" clas="class-button"></p-dropdown>
             </div>
           </div>
         </div>
@@ -76,3 +92,6 @@
     </div>
   </div>
 </form>
+
+<p-confirmDialog width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>
+

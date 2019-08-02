@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<div class="padre" style="width: 95%">
+<div class="padre" style="width: 85%">
   <p-panel header="Suscriptores">
     <div class="ui-g">
       <div class="ui-sm-12 ui-g-8">
@@ -47,8 +47,8 @@
             <tr [pSelectableRow]="rowData" (dblclick)="fnAsignarRow(rowData)">
               <td class="ui-resizable-column"> {{rowData['cedula']}}</td>
               <td class="ui-resizable-column"> {{rowData['nombre'] }}</td>
-              <td class="ui-resizable-column"> {{rowData['tipo'] }}</td>
-              <td class="ui-resizable-column" [style.text-align]="'center'"> <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['activo']" disabled ></p-checkbox></td>
+             <!-- <td class="ui-resizable-column"> {{rowData['tipo'] }}</td>-->
+              <td class="ui-resizable-column" [style.text-align]="'center'"> <p-checkbox name="activo" binary="true" [(ngModel)]="rowData['estado']" disabled ></p-checkbox></td>
               <!-- <td class="ui-resizable-column" [style.text-align]="'center'">
               <p-checkbox *ngIf="rowData['enb'] !== undefined" [(ngModel)]="rowData['enb']" binary="true"
                 disabled="true"></p-checkbox>
@@ -69,3 +69,5 @@
     </div>
   </p-panel>
 </div>
+
+<p-confirmDialog width="425" rejectLabel="No" acceptLabel="Sí" appendTo="body"></p-confirmDialog>

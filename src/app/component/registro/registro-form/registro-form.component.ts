@@ -7,6 +7,7 @@ import { GlobalService } from 'src/app/services/global.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Registro } from 'src/app/clases/registro.class';
 import { TipoServicio } from 'src/app/clases/tipoServicio.class';
+import { Usuarios } from 'src/app/clases/usuarios.class';
 
 @Component({
   selector: 'app-registro-form',
@@ -23,6 +24,13 @@ export class RegistroFormComponent implements OnInit {
     comienzo = new Date();
     fin = new Date();
     tipoServicioList = [];
+    tipoTramiteList = [];
+    codigoCausalList = [];
+    tipoRespuestaList = [];
+    tipoNotificacionList = [];
+    ciudadList = [];
+    es: any;
+    cities = [];
     constructor(
       public dynamicDialogRef: DynamicDialogRef,
       public dynamicDialogConfig: DynamicDialogConfig,
@@ -41,27 +49,85 @@ export class RegistroFormComponent implements OnInit {
       }else {
         this.item.activo=true;
       }
-      this.fnBuscarTipoServicio();
+      this.fnLLenarSelects();
+
+      this.es = {
+        firstDayOfWeek: 1,
+        dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+        dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+        dayNamesMin: [ "D","L","M","X","J","V","S" ],
+        monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+        monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
+        today: 'Hoy',
+        clear: 'Borrar'
+    }
+    }
+
+
+    public convertToDate(fec: string) {
+      if (fec !== null && fec !== undefined) {
+        const res = fec.split('-');
+        const date = res[2] + '/' + res[1] + '/' + res[0];
+        return date;
+      }
+      return null;
+    }
+
+
+
+    fnLLenarSelects() {
+      this.fnBuscarListSelect(this.constant.servicios);
+      this.fnBuscarListSelect(this.constant.tramites);
+      this.fnBuscarListSelect(this.constant.causales);
+      this.fnBuscarListSelect(this.constant.respuestas);
+      this.fnBuscarListSelect(this.constant.notificaciones);
+      this.fnBuscarListSelect(this.constant.ciudades);
     }
   
     buscar(id) {
       this.gService.getBy(this.constant.documento, id)
         .subscribe(
           (data: Registro) => {
-            this.comienzo = new Date('1970-01-01T' );// + data.comienzo);
-            this.fin = new Date('1970-01-01T' );// + data.fin);
-            this.item = data;    
+            this.item = data;
+            this.item.fecha = new Date(this.item.fecha);
+            this.item.respfecha = new Date(this.item.respfecha);
+            this.item.notifecha = new Date (this.item.notifecha);
          },
           error => {
             this.messageService.add({ severity: 'error', summary: 'Verifique', detail: error });
           });
     }
 
-    fnBuscarTipoServicio() {
+    fnOnfocus() {
+      if (this.item.numcuentaced) {
+        const filtros = {f:['cedula'], v:[this.item.numcuentaced], l:[false]};
+        this.gService.getAll(this.constant.suscriptores, filtros)
+        .subscribe(
+          (data: Usuarios[]) => {
+            if (data.length > 0) {
+              this.item.numcuentanom = data[0]['nombre'];
+              this.item.numcuenta = data[0]['id'];
+            }else {
+              this.messageService.add({ severity: 'info', summary: 'Verifique', detail: 'Usuario '+this.item.numcuentaced+ ' no existe' });
+              this.item.numcuentaced = null;
+              this.item.numcuentanom = null;
+              this.item.numcuenta = null;
+            }
+            
+          },
+          error => {
+            this.messageService.add({ severity: 'info', summary: 'Verifique', detail: error });
+          });
+      } else {
+        this.item.numcuentanom = null;
+      }
+    }
+
+    fnBuscarListSelect(modulo: string) {
       const filtros = {f:[], v:[], l:[]};
-      this.gService.getAll(this.constant.servicios, filtros)
+      this.gService.getAll(modulo, filtros)
       .subscribe(
-        (data: TipoServicio[]) => this.fnConstruirList(data),
+        (data: []) => this.fnConstruirList(data, modulo),
         error => {
           this.messageService.add({ severity: 'info', summary: 'Verifique', detail: error });
           /*const snackBarRef = this.snackBar.open(error, 'OK', { duration: 4000 });
@@ -71,11 +137,33 @@ export class RegistroFormComponent implements OnInit {
         });
     }
 
-    fnConstruirList(data: TipoServicio[]) {
+    fnConstruirList(data: [], modulo: string) {
+      const listTmp = [];
       data.forEach(element => {
-        this.tipoServicioList.push({code: element['codigo'], name: element['nombre'] })
+        listTmp.push({label: element['nombre'], value: element['id'] })
       });
-      console.log(this.tipoServicioList);
+      switch (modulo) {
+        case this.constant.servicios: 
+          this.tipoServicioList = listTmp;
+          break;
+      case this.constant.tramites:
+          this.tipoTramiteList = listTmp;
+          break;
+      case this.constant.causales:
+          this.codigoCausalList = listTmp;
+          break;
+      case this.constant.respuestas:
+          this.tipoRespuestaList = listTmp;
+          break;
+      case this.constant.notificaciones:
+          this.tipoNotificacionList = listTmp;
+          break;
+      case this.constant.ciudades:
+          this.ciudadList = listTmp;
+          break;
+        default:
+          break;
+      }
     }
   
     onSubmit() {
@@ -87,7 +175,6 @@ export class RegistroFormComponent implements OnInit {
       //this.item.comienzo = this.comienzo.getTime();
       //this.item.fin = this.fin.getTime();
       //console.log(this.item.fin);
-      console.log(this.item);
       this.gService.save(this.constant.documento, this.item)
         .subscribe(
           (data: Registro) => {
@@ -120,7 +207,7 @@ export class RegistroFormComponent implements OnInit {
         .subscribe(
           (data: Registro) => {
             this.messageService.add({ severity: 'info', summary: 'Verifique', detail: 'Registro exitoso' });
-            // this.cerrar();
+            this.onClose();
           },
           error => {
             // cierra spinner
@@ -131,7 +218,7 @@ export class RegistroFormComponent implements OnInit {
   
     onClose() {
       // reset formulario
-      this.dynamicDialogRef.close('Carro 1');
+      this.dynamicDialogRef.close('');
     }
   }
   
