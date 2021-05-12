@@ -28,7 +28,7 @@
     "@types/chart.js": "^2.7.55",
     "@types/html2canvas": "0.0.35",
     "@types/randomcolor": "^0.5.2",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "font-awesome": "4.7.0",
     "fullcalendar": "4.0.0-alpha.2",
     "html2canvas": "^1.0.0-rc.3",
