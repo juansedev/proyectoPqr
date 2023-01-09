@@ -30,7 +30,7 @@
     "@types/randomcolor": "^0.5.2",
     "chart.js": "^2.8.0",
     "font-awesome": "4.7.0",
-    "fullcalendar": "4.0.0-alpha.2",
+    "fullcalendar": "6.0.2",
     "html2canvas": "^1.0.0-rc.3",
     "intl": "1.2.5",
     "primeicons": "1.0.0",
